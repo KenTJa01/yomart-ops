@@ -1,4 +1,4 @@
-<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 ">
+<nav class="fixed top-0 z-50 w-[87%] bg-batman-950 ml-64">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
@@ -14,10 +14,11 @@
                     </svg>
                 </button>
                 <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap ">Flowbite</span>
+                    <img src="{{ asset('svg/logo-yomart-ops-landscape.svg') }}" style="width: 150px;"
+                        class="h-auto" alt="Yomart Ops Logo" />
                 </a>
             </div>
+
             <div class="flex items-center">
                 <div class="flex items-center ms-3">
                     <div>
@@ -29,7 +30,7 @@
                                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
                         </button>
                     </div>
-                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-sm shadow-sm "
+                    <div class="z-50 hidden my-4 text-base list-none bg-batman-950 divide-y divide-gray-100 rounded-sm shadow-sm "
                         id="dropdown-user">
                         <div class="px-4 py-3" role="none">
                             <p class="text-sm text-gray-900 " role="none">

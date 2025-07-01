@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
 
     // ========================= MASTER USER =========================
     Route::get('/master_data/user', [UserController::class, 'MasterUserPage'])->name('/master_data/user');
+    Route::get('/get-user-list-datatable', [UserController::class, 'getUserListDatatable'])->name('get-user-list-datatable');
 
 
 });
