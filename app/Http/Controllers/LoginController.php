@@ -26,7 +26,6 @@ class LoginController extends Controller
 
         $cekUser = User::where('username', $request->username)->first();
 
-        // return $request;
         if ($cekUser){
             if ( $cekUser->is_active == 1 ) {
 

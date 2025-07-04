@@ -25,12 +25,62 @@
                     <img src="{{ asset('svg/img/logo-yomart.svg') }}" class="w-14 h-14 mb-3" alt="logo" />
                     <h2 class="text-2xl font-bold text-gray-800">Ayo Mulai!</h2>
                     <p class="text-sm text-gray-600 lg:text-left mt-2">
-                        Selamat Data Mastering di YomartOps – silakan <em>login</em> terlebih dahulu sebelum masuk ke
+                        Selamat Datang di YomartOps – silakan <em>login</em> terlebih dahulu sebelum masuk ke
                         website.
                     </p>
                 </div>
 
-                <div id="div-alert" class="mb-4"></div>
+                <div id="div-alert" class="mb-4">
+
+                    <div id="alert-login-failed" class="hidden flex items-center w-full p-4 mb-4 text-batman-900 bg-red-50 rounded-lg shadow-sm" role="alert">
+                        <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-ironman-500 bg-ironman-100 rounded-lg">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
+                            </svg>
+                            <span class="sr-only">Error icon</span>
+                        </div>
+                        <div class="ms-3 text-sm font-normal"><span class="font-bold">LOGIN FAILED!</span> Username or password are wrong!</div>
+                        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-ironman-500 text-white hover:text-white rounded-lg focus:ring-2 focus:ring-ironman-300 p-1.5 hover:bg-ironman-600 inline-flex items-center justify-center h-8 w-8" onclick="$('#alert-login-failed').addClass('hidden')" aria-label="Close">
+                            <span class="sr-only">Close</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="alert-not-active" class="hidden flex items-center w-full p-4 mb-4 text-batman-900 bg-red-50 rounded-lg shadow-sm" role="alert">
+                        <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-ironman-500 bg-ironman-100 rounded-lg">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
+                            </svg>
+                            <span class="sr-only">Error icon</span>
+                        </div>
+                        <div class="ms-3 text-sm font-normal"><span class="font-bold">NOT ACTIVE!</span> User not active!</div>
+                        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-ironman-500 text-white hover:text-white rounded-lg focus:ring-2 focus:ring-ironman-300 p-1.5 hover:bg-ironman-600 inline-flex items-center justify-center h-8 w-8" onclick="$('#alert-not-active').addClass('hidden')" aria-label="Close">
+                            <span class="sr-only">Close</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="alert-success" class="hidden flex items-center w-full p-4 mb-4 text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm" role="alert">
+                        <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                            </svg>
+                            <span class="sr-only">Check icon</span>
+                        </div>
+                        <div class="ms-3 text-sm font-normal"><span class="font-bold">SUCCESS!</span> You've successfully logged in.</div>
+                        {{-- <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-success" aria-label="Close">
+                            <span class="sr-only">Close</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                        </button> --}}
+                    </div>
+
+                </div>
 
                 <div class="space-y-4">
                     <div>
@@ -85,6 +135,10 @@
 
         }
 
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
         $("#button_login").click(function() {
 
             var username = $("#username").val();
@@ -98,71 +152,43 @@
                     username: username,
                     password: password,
                 },
-                success: function(response) {
+                success: async function(response) {
 
                     if (response.errors) {
 
                         var alert = document.getElementById("alert_error");
+                        console.log(response.errors.title);
 
-                        if (alert) {
-                            alert.remove();
-                            $("#div-alert").prepend(`
-                                <div id="alert_error" class="mt-2 bg-red-50 border-s-4 border-red-500 p-4" role="alert" tabindex="-1" aria-labelledby="hs-bordered-red-style-label">
-                                    <div class="flex">
-                                        <div class="shrink-0">
-                                            <!-- Icon -->
-                                            <span
-                                                class="inline-flex justify-center items-center size-8 rounded-full border-4 border-red-100 bg-red-200 text-red-800">
-                                                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M18 6 6 18"></path>
-                                                    <path d="m6 6 12 12"></path>
-                                                </svg>
-                                            </span>
-                                            <!-- End Icon -->
-                                        </div>
-                                        <div class="ms-3">
-                                            <h3 id="hs-bordered-red-style-label" class="text-gray-800 font-semibold">
-                                                ` + response.errors.title + `
-                                            </h3>
-                                            <p id="message_error" class="text-sm text-gray-700">
-                                                ` + response.errors.message + `
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>`);
+                        if (response.errors.title == "LOGIN FAILED!") {
+
+                            $("#alert-login-failed").removeClass("hidden");
+                            $("#alert-not-active").addClass("hidden");
+                            $("#alert-success").addClass("hidden");
+
+                        } else if (response.errors.title == "NOT ACTIVE!") {
+
+                            $("#alert-not-active").removeClass("hidden");
+                            $("#alert-login-failed").addClass("hidden");
+                            $("#alert-success").addClass("hidden");
+
                         } else {
-                            $("#div-alert").prepend(`
-                                <div id="alert_error" class="mt-2 bg-red-50 border-s-4 border-red-500 p-4" role="alert" tabindex="-1" aria-labelledby="hs-bordered-red-style-label">
-                                    <div class="flex">
-                                        <div class="shrink-0">
-                                            <!-- Icon -->
-                                            <span
-                                                class="inline-flex justify-center items-center size-8 rounded-full border-4 border-red-100 bg-red-200 text-red-800">
-                                                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M18 6 6 18"></path>
-                                                    <path d="m6 6 12 12"></path>
-                                                </svg>
-                                            </span>
-                                            <!-- End Icon -->
-                                        </div>
-                                        <div class="ms-3">
-                                            <h3 id="hs-bordered-red-style-label" class="text-gray-800 font-semibold">
-                                                ` + response.errors.title + `
-                                            </h3>
-                                            <p id="message_error" class="text-sm text-gray-700">
-                                                ` + response.errors.message + `
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>`);
+
+                            $("#alert-login-failed").removeClass("hidden");
+                            $("#alert-not-active").addClass("hidden");
+                            $("#alert-success").addClass("hidden");
+
                         }
 
                     } else {
 
+                        $("#alert-login-failed").addClass("hidden");
+                        $("#alert-not-active").addClass("hidden");
+                        $("#alert-success").removeClass("hidden");
+
+                        // ✅ Delay selama 10 detik
+                        await delay(700);
+
+                        // ✅ Redirect setelah delay
                         window.location.href = response.redirect;
 
                     }
