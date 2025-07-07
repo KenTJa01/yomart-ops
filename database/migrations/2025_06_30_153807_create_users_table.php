@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string("username");
             $table->string("password");
             $table->string("name");
-            $table->integer("is_ho")->default(1);
             $table->integer("is_active")->default(1);
             $table->bigInteger("profile_id")->nullable();
             $table->foreign("profile_id")->references("id")->on("profiles");

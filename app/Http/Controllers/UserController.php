@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\CommonCustomException;
+use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -105,6 +112,189 @@ class UserController extends Controller
             })
             ->rawColumns(['actions'])
             ->make(true);
+    }
+
+    public function postNewUser(Request $request)
+    {
+
+        $user = Auth::user();
+
+        /** Validate Input */
+        $validate = Validator::make($request->all(), [
+            'username' => ['required', 'string'],
+            'name' => ['required', 'string'],
+            'password' => ['required', 'string'],
+            'profile_id' => ['required'],
+            'status' => ['required'],
+        ]);
+
+
+        if ($validate->fails()) {
+            throw new ValidationException($validate);
+        }
+        (array) $validated = $validate->validated();
+
+        $username = $validated['username'];
+        $name = $validated['name'];
+
+        $userCek = User::where('username', $username)->first();
+        if ( !is_null($userCek) ) {
+            throw ValidationException::withMessages(['detail' => 'Username already exist!']);
+        }
+
+        // ===== BCRYPT PASSWORD =====
+        $password = bcrypt($validated['password']);
+
+        // ===== GET PROFILE & SITE =====
+        $profile = Profile::where('id', $validated['profile_id'])->first();
+
+        $status = $validated['status'];
+
+        DB::beginTransaction();
+        try {
+
+            $userData = User::create([
+                'username' => $username,
+                'name' => $name,
+                'password' => $password,
+                'profile_id' => $profile->id,
+                'is_active' => $status,
+                'created_by' => $user?->id,
+                'updated_by' => $user?->id,
+            ]);
+
+            (string) $title = 'Success';
+            (string) $message = 'User request successfully submitted with username: '.$username;
+            (array) $data = [
+                'trx_number' => $username,
+            ];
+            (string) $route = route('/master_data/user');
+
+            DB::commit();
+            return response()->json([
+                'title' => $title,
+                'message' => $message,
+                'route' => $route,
+                'data' => $data,
+            ]);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            Log::warning('Validation error when submit user request', ['userId' => $user?->id, 'userName' => $user?->name, 'errors' => $e->getMessage()]);
+            throw $e;
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            throw new CommonCustomException('Failed to submit user request', 422, $e);
+        }
+
+    }
+
+    public function getOldDataOfUser(Request $request)
+    {
+        $data = User::where('id', $request->user_id)->first();
+        return response()->json($data);
+    }
+
+    public function postEditUser(Request $request)
+    {
+
+        $user = Auth::user();
+
+        /** Validate Input */
+        $validate = Validator::make($request->all(), [
+            'id_user' => ['required'],
+            'name' => ['required', 'string'],
+            'profile_id' => ['required'],
+            'status' => ['required'],
+        ]);
+
+
+        if ($validate->fails()) {
+            throw new ValidationException($validate);
+        }
+        (array) $validated = $validate->validated();
+
+        $name = $validated['name'];
+        $status = $validated['status'];
+
+        $profile = Profile::where('id', $validated['profile_id'])->first();
+
+        DB::beginTransaction();
+        try {
+
+            $userData = User::where('id', $validated['id_user'])->first();
+
+            $userData->name = $name;
+            $userData->profile_id = $profile->id;
+            $userData->is_active = $status;
+            $userData->updated_by = $user?->id;
+            $userData->save();
+
+
+            (string) $title = 'Success';
+            (string) $message = 'User request successfully submitted with username: '.$name;
+            (array) $data = [
+                'trx_number' => $name,
+            ];
+            (string) $route = route('/master_data/user');
+
+            DB::commit();
+            return response()->json([
+                'title' => $title,
+                'message' => $message,
+                'route' => $route,
+                'data' => $data,
+            ]);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            Log::warning('Validation error when submit user request', ['userId' => $user?->id, 'userName' => $user?->name, 'errors' => $e->getMessage()]);
+            throw $e;
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            throw new CommonCustomException('Failed to submit user request', 422, $e);
+        }
+
+    }
+
+    public function postResetPw(Request $request)
+    {
+
+        $userLogin = Auth::user();
+
+        $newPw = 12345;
+        $newPwBcrypt = bcrypt($newPw);
+
+        DB::beginTransaction();
+        try {
+
+            $user = User::find($request->user_id);
+            $user->password = $newPwBcrypt;
+            $user->updated_by = $userLogin?->id;
+
+            $user->update();
+
+            (string) $title = 'Success';
+            (string) $message = 'User request successfully change password into: '.$newPw;
+            (array) $data = [
+                'trx_number' => $user->username,
+            ];
+            (string) $route = route('/master_data/user');
+
+            DB::commit();
+            return response()->json([
+                'title' => $title,
+                'message' => $message,
+                'route' => $route,
+                'data' => $data,
+            ]);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            Log::warning('Validation error when submit change password request', ['userId' => $user?->id, 'userName' => $user?->name, 'errors' => $e->getMessage()]);
+            throw $e;
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            throw new CommonCustomException('Failed to submit change password request', 422, $e);
+        }
+
     }
 
 }

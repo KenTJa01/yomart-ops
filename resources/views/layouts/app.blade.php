@@ -160,6 +160,13 @@
         .no-scrollbar::-webkit-scrollbar {
             display: none;             /* Chrome, Safari, Opera */
         }
+
+        .select2-container .select2-selection {
+            height: 41px !important;
+            border: 1px solid #DEE2E6;
+            border-radius: 0.375rem;
+            padding: 6px 3px !important;
+        }
     </style>
 
 </head>

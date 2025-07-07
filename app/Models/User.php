@@ -20,7 +20,6 @@ class User extends Authenticatable
         'username',
         'password',
         'name',
-        'is_ho',
         'is_active',
         'profile_id',
         'created_by',

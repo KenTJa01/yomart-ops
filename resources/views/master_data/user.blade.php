@@ -4,7 +4,7 @@
 
         <div class="bg-white border border-batman-50 rounded-lg p-4 shadow-sm flex flex-col">
             <div class="flex items-center">
-                <button data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-batman-900 hover:bg-batman-800 focus:ring-4 focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
+                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-batman-900 hover:bg-batman-800 focus:ring-4 focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
                     <img src="{{ asset('svg/plus.svg') }}" class="w-3 h-3 me-2" alt="Plus Icon">
                     Tambah
                 </button>
@@ -20,9 +20,11 @@
                         <tr>
                             <th scope="col" class="top_left_tableData px-6 py-5 !pl-[25px] border-t-0 border-l-0">No.</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Username</th>
-                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Name</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Nama</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Status</th>
-                            <th scope="col" class="top_right_tableData px-6 py-5 !pl-[25px] border-t-0 border-r-0" style="width: 130px"><span class="sr-only">Edit</span></th>
+                            <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 120px !important;">
+                                <img src="{{ asset('svg/action.svg') }}" class="w-5 h-5 m-auto">
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +33,7 @@
                         <tr>
                             <th class="bottom_left_tableData"></th>
                             <th>Username</th>
-                            <th>Name</th>
+                            <th>Nama</th>
                             <th>Status</th>
                             <th class="bottom_right_tableData"></th>
                         </tr>
@@ -88,10 +90,10 @@
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
-                                <label for="nama" class="block text-sm font-medium text-batman-900">Nama</label>
+                                <label for="name" class="block text-sm font-medium text-batman-900">Nama</label>
                             </div>
                             <div class="col-span-5 col-end-7">
-                                <input type="text" id="nama" name="nama"
+                                <input type="text" id="name" name="name"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder="Masukkan nama" required>
                             </div>
@@ -123,7 +125,7 @@
                             </div>
                             <div class="col-span-5 col-end-7">
                                 <label class="inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
+                                    <input id="status" type="checkbox" value="" class="sr-only peer" checked>
                                     <div
                                         class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
                                     </div>
@@ -136,7 +138,7 @@
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
                     <button id="button_reset_modal" type="button" class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
-                    <button id="button_submit_modal" data-modal-hide="newCreationModal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -178,34 +180,25 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
                     <div class="flex flex-col">
+                        <input type="hidden" id="user_id_edit">
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
                                 <label for="username_edit" class="block text-sm font-medium text-batman-900">Username</label>
                             </div>
                             <div class="col-span-5 col-end-7">
                                 <input type="text" id="username_edit" name="username"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan username" required>
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-200 block w-full p-2.5"
+                                    placeholder="Masukkan username" disabled readonly>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
-                                <label for="nama_edit" class="block text-sm font-medium text-batman-900">Nama</label>
+                                <label for="name_edit" class="block text-sm font-medium text-batman-900">Nama</label>
                             </div>
                             <div class="col-span-5 col-end-7">
-                                <input type="text" id="nama_edit" name="nama"
+                                <input type="text" id="name_edit" name="name_edit"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder="Masukkan nama" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="password_edit" class="block text-sm font-medium text-batman-900">Password</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="password" id="password_edit" name="password"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan password" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
@@ -368,11 +361,114 @@
         }
 
         $(document).on('click', '#button_reset_modal', function () {
+
             $('#username').val('');
-            $('#nama').val('');
+            $('#name').val('');
             $('#password').val('');
             $('#select_profile').val('').trigger('change');
             $('#status').prop('checked', true);
+
+        });
+
+        $(document).on('click', '#button_new', function () {
+
+            $('#username').val('');
+            $('#name').val('');
+            $('#password').val('');
+            $('#select_profile').val('').trigger('change');
+            $('#status').prop('checked', true);
+
+            getAllDataProfile();
+
+        });
+
+        function getAllDataProfile() {
+
+            $("#select_profile").html('<option value="">Select profile</option>');
+
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/get-all-data-profile') }}",
+                dataType: 'json',
+                data: {},
+                success: function(response) {
+                    $.each(response,function(key, value)
+                    {
+                        $("#select_profile").append('<option value="' + value.id + '">' + value.profile_name + '</option>');
+                    });
+                },
+                error: function(error) {
+                    console.log(error.responseJSON);
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Error",
+                        text: error.responseJSON.message ?? 'Failed get list of profile',
+                    });
+                },
+            });
+
+        }
+
+        // ========================= SUBMIT NEW DATA =========================
+        $(document).on('click', '#button_submit_modal', function(event) {
+
+            var username = $("#username").val();
+            var name = $("#name").val();
+            var password = $("#password").val();
+            var profile_id = $("#select_profile").val();
+            var status = document.getElementById('status').checked;
+
+            if ( status == 1 ) {
+                var flag = 1;
+            } else {
+                var flag = 0;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ url('/post-new-user') }}",
+                dataType: 'json',
+                data: {
+                    username: username,
+                    name: name,
+                    password: password,
+                    profile_id: profile_id,
+                    status: flag,
+                },
+                success: function(response) {
+
+                    return Swal.fire({
+                        title: response.title,
+                        text: response.message,
+                        timer: 5000,
+                        icon: "success",
+                        timerProgressBar: true,
+                        showConfirmButton: true,
+                        confirmButtonColor: "#DFBA86",
+                        customClass: {
+                            confirmButton: 'custom-confirm-button-swal'
+                        },
+                        willClose: () => {
+                            if (typeof response.route !== "undefined") {
+                                window.location.href = response.route;
+                            }
+                        },
+                    });
+                },
+                error: function(error) {
+
+                    console.log(error.responseJSON);
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Error",
+                        text: error.responseJSON.message ?? 'Failed submit user request',
+                        target: document.getElementById('newCreationModal'),
+                    });
+                    $("#button_submit_modal").prop('disabled', false);
+                },
+            });
+
+
         });
 
         $(document).on('click', '.button_edit', function () {
@@ -414,11 +510,209 @@
         });
 
         $(document).on('click', '#button_reset_modal_edit', function () {
+
             $('#username_edit').val('');
-            $('#nama_edit').val('');
-            $('#password_edit').val('');
+            $('#name_edit').val('');
             $('#select_profile_edit').val('').trigger('change');
             $('#status_edit').prop('checked', true);
+
+        });
+
+        $(document).on('click', '#button_edit_modal', function () {
+
+            // $('#select_profile_edit').val('').trigger('change');
+
+            const data_id = $(this).data('id');
+
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/get-old-data-of-user') }}",
+                dataType: 'json',
+                data: {
+                    user_id: data_id,
+                },
+                success: function(response) {
+                    $("#user_id_edit").val(response.id);
+                    $("#username_edit").val(response.username);
+                    $("#name_edit").val(response.name);
+
+                    if ( response.is_active == 1 ) {
+                        $("#status_edit").attr('checked', true);
+                    } else if ( response.is_active == 0 ) {
+                        $("#status_edit").attr('checked', false);
+                    }
+
+                    $("#select_profile_edit").html('');
+                    getProfileById(response.profile_id);
+
+                },
+                error: function(error) {
+                    console.log(error.responseJSON);
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Error",
+                        text: error.responseJSON.message ?? 'Failed get list of user',
+                    });
+                },
+            });
+
+        });
+
+        function getProfileById(profile_id) {
+
+            $("#select_profile_edit").html('<option value="">Select profile</option>');
+
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/get-all-data-profile') }}",
+                dataType: 'json',
+                data: {},
+                success: function(response) {
+
+                    $.each(response,function(key, value)
+                    {
+                        if ( value.id == profile_id ) {
+                            $("#select_profile_edit").append('<option value="' + value.id + '" selected>' + value.profile_name + '</option>');
+                        } else {
+                            $("#select_profile_edit").append('<option value="' + value.id + '">' + value.profile_name + '</option>');
+                        }
+                    });
+                },
+                error: function(error) {
+                    console.log(error.responseJSON);
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Error",
+                        text: error.responseJSON.message ?? 'Failed get list of profile',
+                    });
+                },
+            });
+
+        }
+
+        // ========================= SUBMIT EDIT DATA =========================
+        $(document).on('click', '#button_submit_modal_edit', function() {
+
+            var id = $("#user_id_edit").val();
+            var name = $("#name_edit").val();
+            var profile_id = $("#select_profile_edit").val();
+            var status = document.getElementById('status_edit').checked;
+
+            if ( status == 1 ) {
+                var flag = 1;
+            } else {
+                var flag = 0;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ url('/post-edit-user') }}",
+                dataType: 'json',
+                data: {
+                    id_user: id,
+                    name: name,
+                    profile_id: profile_id,
+                    status: flag,
+                },
+                success: function(response) {
+
+                    return Swal.fire({
+                        title: response.title,
+                        text: response.message,
+                        timer: 5000,
+                        icon: "success",
+                        timerProgressBar: true,
+                        showConfirmButton: true,
+                        confirmButtonColor: "#DFBA86",
+                        customClass: {
+                            confirmButton: 'custom-confirm-button-swal'
+                        },
+                        willClose: () => {
+                            if (typeof response.route !== "undefined") {
+                                window.location.href = response.route;
+                            }
+                        },
+                    });
+                },
+                error: function(error) {
+
+                    console.log(error.responseJSON);
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Error",
+                        text: error.responseJSON.message ?? 'Failed submit user request',
+                        target: document.getElementById('editModal'),
+                    });
+                    $("#button_submit_modal_edit").prop('disabled', false);
+                },
+            });
+
+        });
+
+        // ========================= CLICK BUTTON RESET PASSWORD =========================
+        $(document).on('click', '#button_reset_pw', function() {
+
+            const data_id = $(this).data('id');
+
+            Swal.fire({
+                icon: "warning",
+                title: "Reset Password",
+                text: "Are you sure want to reset the password?",
+                showCancelButton: true,
+                confirmButtonText: "Reset",
+                confirmButtonColor: "#d33",
+                position: 'top-center',
+                customClass: {
+                    popup: 'custom-popup-swal'
+                },
+                showClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                },
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ url('/post-reset-pw') }}",
+                        dataType: 'json',
+                        data: {
+                            user_id: data_id,
+                        },
+                        success: function(response) {
+
+                            return Swal.fire({
+                                title: response.title,
+                                text: response.message,
+                                timer: 5000,
+                                icon: "success",
+                                timerProgressBar: true,
+                                showConfirmButton: true,
+                                confirmButtonColor: "#DFBA86",
+                                customClass: {
+                                    confirmButton: 'custom-confirm-button-swal'
+                                },
+                                willClose: () => {
+                                    if (typeof response.route !== "undefined") {
+                                        window.location.href = response.route;
+                                    }
+                                },
+                            });
+
+                        },
+                        error: function(error) {
+
+                            console.log(error.responseJSON);
+                            Swal.fire({
+                                icon: 'error',
+                                title: "Error",
+                                text: error.responseJSON.message ?? 'Failed submit change password request',
+                                target: document.getElementById('dialog_add'),
+                            });
+                            $(".submitAdd").prop('disabled', false);
+                        },
+                    });
+                }
+            });
+
         });
 
     </script>

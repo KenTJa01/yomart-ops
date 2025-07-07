@@ -119,97 +119,11 @@
                                     <div id="hs-tree-view-checkbox" role="tree" aria-orientation="vertical" data-hs-tree-view='{  "controlBy": "checkbox", "autoSelectChildren": true }'>
 
                                         <!-- 1st Level Accordion Group -->
-                                        <div data-hs-nested-draggable="">
+                                        <div data-hs-nested-draggable="" id="menuTreeContent" data-hs-tree-view='{  "controlBy": "checkbox", "autoSelectChildren": true }'>
 
-                                            @foreach($data as $menu)
-                                                <div class="hs-accordion hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-1 active" role="treeitem" aria-expanded="true" id="hs-checkbox-tree-heading-{{ Str::slug($menu['menu_name'], '-') }}" data-hs-tree-view-item='{ "value": "{{ Str::slug($menu['menu_name'], '_') }}", "isDir": true }'>
-
-                                                    <!-- Master Data Accordion Heading -->
-                                                    <div class="hs-accordion-heading py-0.5 rounded-md flex items-center gap-x-0.5 w-full hs-tree-view-selected:bg-gray-100 ">
-                                                        <button class="hs-accordion-toggle size-6 flex justify-center items-center hover:bg-gray-100 rounded-md focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none " aria-expanded="true" aria-controls="{{ Str::slug($menu['menu_name'], '-') }}">
-                                                            <svg class="size-4 text-gray-800 " xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                                                <path d="M5 12h14"></path>
-                                                                <path class="hs-accordion-active:hidden block" d="M12 5v14"></path>
-                                                            </svg>
-                                                        </button>
-
-                                                        <div class="grow hs-tree-view-selected:bg-gray-100  px-1.5 rounded-md cursor-pointer">
-                                                            <span class="text-sm text-gray-800 ">
-                                                                <label class="flex">
-                                                                    <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none" value="{{ Str::slug($menu['menu_name'], '_') }}">
-                                                                    <span class="ms-3">{{ $menu['menu_name'] }}</span>
-                                                                </label>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Master Data Accordion Heading -->
-
-                                                    <!-- Master Data Collapse -->
-                                                    <div id="{{ Str::slug($menu['menu_name'], '-') }}" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="group" aria-labelledby="hs-checkbox-tree-heading-{{ Str::slug($menu['menu_name'], '-') }}">
-
-                                                        <!-- 2nd Level Accordion Group -->
-                                                        <div class="ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-500 " data-hs-nested-draggable="">
-
-                                                            @foreach($menu['submenu'] as $submenu)
-
-                                                                <div class="hs-accordion hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-2 active" role="treeitem" aria-expanded="true" id="{{ Str::slug($submenu['submenu_name'], '-') }}-heading-collapse" data-hs-tree-view-item='{ "value": "{{ Str::slug($submenu['submenu_name'], '_') }}", "isDir": true }'>
-
-                                                                    <!-- Master User Accordion Heading -->
-                                                                    <div class="hs-accordion-heading py-0.5 rounded-md flex items-center gap-x-0.5 w-full hs-tree-view-selected:bg-gray-100 ">
-                                                                        <button class="hs-accordion-toggle size-6 flex justify-center items-center hover:bg-gray-100 rounded-md focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" aria-expanded="true" aria-controls="{{ Str::slug($submenu['submenu_name'], '-') }}-collapse">
-                                                                            <svg class="size-4 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                                                                <path d="M5 12h14"></path>
-                                                                                <path class="hs-accordion-active:hidden block" d="M12 5v14"></path>
-                                                                            </svg>
-                                                                        </button>
-
-                                                                        <div class="grow hs-tree-view-selected:bg-gray-100 px-1.5 rounded-md cursor-pointer">
-                                                                            <span class="text-sm text-gray-800 ">
-                                                                                <label class="flex">
-                                                                                    <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none" value="{{ Str::slug($submenu['submenu_name'], '_') }}">
-                                                                                    <span class="ms-3">{{ $submenu['submenu_name'] }}</span>
-                                                                                </label>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- End Master User Accordion Heading -->
-
-                                                                    <!-- Master User Collapse -->
-                                                                    <div id="{{ Str::slug($submenu['submenu_name'], '-') }}-collapse" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="group" aria-labelledby="{{ Str::slug($submenu['submenu_name'], '-') }}-heading-collapse">
-
-                                                                        <!-- Master User Accordion Group -->
-                                                                        <div class="ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-300 "data-hs-nested-draggable="">
-
-                                                                            @foreach($submenu['actions'] as $action)
-                                                                                <div style="padding-left: 32px;" class="ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-100 py-0.5 px-1.5 rounded-md hs-tree-view-selected:bg-gray-100 hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-3" role="treeitem" data-hs-tree-view-item='{ "value": "{{ $action['key'] }}", "isDir": false }'>
-                                                                                    <span class="text-sm text-gray-800 ">
-                                                                                        <label class="flex">
-                                                                                            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none " value="{{ $action['key'] }}">
-                                                                                            <span class="ms-3">{{ Str::replace('_', ' ', $action['key']) }}</span>
-                                                                                        </label>
-                                                                                    </span>
-                                                                                </div>
-                                                                            @endforeach
-
-                                                                        </div>
-                                                                        <!-- End Master User Accordion Group -->
-
-                                                                    </div>
-                                                                    <!-- End Master User Collapse -->
-
-                                                                </div>
-
-                                                            @endforeach
-
-
-                                                        </div>
-                                                        <!-- 2nd Level Accordion Group -->
-
-                                                    </div>
-                                                    <!-- End 1st Level Collapse -->
-
-                                                </div>
-                                            @endforeach
+                                            <!-- 1st Level Accordion -->
+                                            {{-- ISI KONTEN --}}
+                                            <!-- End 1st Level Accordion -->
 
                                         </div>
                                         <!-- End 1st Level Accordion Group -->
@@ -550,7 +464,6 @@
             $('#description').val('');
 
             $('#status').prop('checked', true);
-            console.log($("#master-data-heading-collapse").val());
 
         });
 
@@ -562,34 +475,126 @@
 
             $('#status').prop('checked', true);
 
-
-            // getAllDataMenu();
+            getAllDataMenu();
 
         });
 
-        // function getAllDataMenu() {
+        function getAllDataMenu() {
 
-        //     $.ajax({
-        //         type: 'GET',
-        //         url: "{{ url('/get-all-data-menu') }}",
-        //         dataType: 'json',
-        //         data: {},
-        //         success: function(response) {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/get-all-data-menu') }}",
+                dataType: 'json',
+                data: {},
+                success: function(response) {
 
-        //             console.log(response);
+                    console.log(response);
+                    renderMenuTree(response);
 
-        //         },
-        //         error: function(error) {
-        //             console.log(error.responseJSON);
-        //             Swal.fire({
-        //                 icon: 'error',
-        //                 title: "Error",
-        //                 text: error.responseJSON.message ?? 'Failed get list of profile',
-        //             });
-        //         },
-        //     });
+                },
+                error: function(error) {
+                    console.log(error.responseJSON);
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Error",
+                        text: error.responseJSON.message ?? 'Failed get list of profile',
+                    });
+                },
+            });
 
-        // }
+        }
+
+        function renderMenuTree(data) {
+
+            let html = '';
+
+            data.forEach(menu => {
+
+                html += `
+                    <div class="hs-accordion hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-1" role="treeitem" aria-expanded="true" id="hs-checkbox-tree-heading-${menu.menu_name.toLowerCase().replace(/\s+/g, '-')}" data-hs-tree-view-item='{ "value": "${menu.menu_name.toLowerCase().replace(/\s+/g, '_')}", "isDir": true }'>
+
+                        <div class="hs-accordion-heading py-0.5 rounded-md flex items-center gap-x-0.5 w-full hs-tree-view-selected:bg-gray-100 ">
+                            <button class="hs-accordion-toggle size-6 flex justify-center items-center hover:bg-gray-100 rounded-md focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none " aria-expanded="true" aria-controls="${menu.menu_name.toLowerCase().replace(/\s+/g, '-')}-collapse">
+                                <svg class="size-4 text-gray-800 " xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path class="hs-accordion-active:hidden block" d="M12 5v14"></path>
+                                </svg>
+                            </button>
+
+                            <div class="grow hs-tree-view-selected:bg-gray-100  px-1.5 rounded-md cursor-pointer">
+                                <span class="text-sm text-gray-800 ">
+                                    <label class="flex">
+                                        <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none" value="${menu.menu_name.toLowerCase().replace(/\s+/g, '_')}">
+                                        <span class="ms-3">${menu.menu_name}</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div id="${menu.menu_name.toLowerCase().replace(/\s+/g, '-')}-collapse" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="group" aria-labelledby="hs-checkbox-tree-heading-${menu.menu_name.toLowerCase().replace(/\s+/g, '-')}">
+
+                            <!-- 2nd Level Accordion Group -->
+                            <div class="ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-100 " data-hs-nested-draggable="">
+
+
+                            `;
+
+                menu.submenu.forEach(sub => {
+
+                    html += `
+                        <div class="hs-accordion hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-2" role="treeitem" aria-expanded="true" id="${sub.submenu_name.toLowerCase().replace(/\s+/g, '-')}-heading-collapse" data-hs-tree-view-item='{ "value": "${sub.submenu_name.toLowerCase().replace(/\s+/g, '_')}", "isDir": true }'>
+
+                            <!-- Master User Accordion Heading -->
+                            <div class="hs-accordion-heading py-0.5 rounded-md flex items-center gap-x-0.5 w-full hs-tree-view-selected:bg-gray-100 ">
+                                <button class="hs-accordion-toggle size-6 flex justify-center items-center hover:bg-gray-100 rounded-md focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" aria-expanded="true" aria-controls="${sub.submenu_name.toLowerCase().replace(/\s+/g, '-')}-collapse">
+                                    <svg class="size-4 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path class="hs-accordion-active:hidden block" d="M12 5v14"></path>
+                                    </svg>
+                                </button>
+
+                                <div class="grow hs-tree-view-selected:bg-gray-100  px-1.5 rounded-md cursor-pointer">
+                                    <span class="text-sm text-gray-800 ">
+                                        <label class="flex">
+                                            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none" value="${sub.submenu_name.toLowerCase().replace(/\s+/g, '_')}">
+                                            <span class="ms-3">${sub.submenu_name}</span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- End Master User Accordion Heading -->
+
+                            <!-- Master User Collapse -->
+                            <div id="${sub.submenu_name.toLowerCase().replace(/\s+/g, '-')}-collapse" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="group" aria-labelledby="${sub.submenu_name.toLowerCase().replace(/\s+/g, '-')}-heading-collapse">
+
+                                <!-- Master User Accordion Group -->
+                                <div class="ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-100 "data-hs-nested-draggable=""> `;
+
+                    sub.actions.forEach(action => {
+                        html += `
+                            <div class="py-0.5 px-1.5 rounded-md hs-tree-view-selected:bg-gray-100  hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-3" role="treeitem" data-hs-tree-view-item='{ "value": "${action.key}", "isDir": false }'>
+                                <span class="text-sm text-gray-800 ">
+                                    <label class="flex">
+                                        <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none " value="${action.key}">
+                                        <span class="ms-3">${(action.key ?? '').replace(/_/g, ' ')}</span>
+                                    </label>
+                                </span>
+                            </div>`;
+                    });
+
+                    html += `</div></div></div>`;
+
+                });
+
+                html += `</div></div></div>`;
+
+            });
+
+            $('#menuTreeContent').html(html);
+
+            window.HSTreeView?.autoInit();
+
+        }
 
         $(document).on('click', '.button_edit', function() {
             const modalEl = document.getElementById('editModal');
