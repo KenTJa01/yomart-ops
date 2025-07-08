@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('profile_permissions', function (Blueprint $table) {
 
             $table->bigIncrements("id");
-            $table->string("profile_name")->unique();
-            $table->string("tipe_profile");
-            $table->string("description");
-            $table->integer("flag")->default(1);
+            $table->bigInteger("profile_id");
+            $table->foreign("profile_id")->references("id")->on("profiles");
+            $table->bigInteger("permission_id");
+            $table->foreign("permission_id")->references("id")->on("permissions");
             $table->timestamps();
             $table->bigInteger("created_by");
             $table->bigInteger("updated_by");
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('profile_permissions');
     }
 };

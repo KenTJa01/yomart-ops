@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Profile_permission extends Model
 {
 
     use HasFactory;
@@ -14,14 +14,12 @@ class Profile extends Model
     public $increment = true;
 
     protected $fillable = [
-        'profile_name',
-        'tipe_profile',
-        'description',
-        'flag',
+        'profile_id',
+        'permission_id',
         'created_by',
         'updated_by',
     ];
 
-    protected $table = 'profiles';
+    protected $table = 'profile_permissions';
 
 }

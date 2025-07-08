@@ -14,16 +14,18 @@ class ProfileSeeder extends Seeder
     public function run(): void
     {
         Profile::create([
-            'profile_code' => 'SUPERADMIN',
             'profile_name' => 'SUPERADMIN',
+            'tipe_profile' => 'legal',
+            'description' => 'SUPERADMIN HO YC',
             'flag' => 1,
             'created_by' => 1,
             'updated_by' => 1,
         ]);
 
         Profile::create([
-            'profile_code' => 'ADMIN',
             'profile_name' => 'ADMIN',
+            'tipe_profile' => 'legal',
+            'description' => 'ADMIN HO YC',
             'flag' => 1,
             'created_by' => 1,
             'updated_by' => 1,

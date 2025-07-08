@@ -164,7 +164,7 @@ class UserController extends Controller
             ]);
 
             (string) $title = 'Success';
-            (string) $message = 'User request successfully submitted with username: '.$username;
+            (string) $message = 'Data User telah berhasil tersimpan dengan username: '.$username;
             (array) $data = [
                 'trx_number' => $username,
             ];
@@ -231,7 +231,7 @@ class UserController extends Controller
 
 
             (string) $title = 'Success';
-            (string) $message = 'User request successfully submitted with username: '.$name;
+            (string) $message = 'Data User telah berhasil tersimpan dengan username: '.$name;
             (array) $data = [
                 'trx_number' => $name,
             ];

@@ -8,7 +8,7 @@
                     <img src="{{ asset('svg/plus.svg') }}" class="w-3 h-3 me-2" alt="Plus Icon">
                     Tambah
                 </button>
-                <span class="text-lg ml-2 font-semibold text-batman-900">Master User</span>
+                <span class="text-lg ml-2 font-semibold text-batman-900">Master Produk</span>
             </div>
 
             <hr class="my-4">
@@ -19,8 +19,9 @@
                     <thead class="text-sm text-white uppercase bg-batman-900">
                         <tr>
                             <th scope="col" class="top_left_tableData px-6 py-5 !pl-[25px] border-t-0 border-l-0">No.</th>
-                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Username</th>
-                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Nama</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Kode Produk</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Nama Produk</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Deskripsi</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Status</th>
                             <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 120px !important;">
                                 <img src="{{ asset('svg/action.svg') }}" class="w-5 h-5 m-auto">
@@ -32,8 +33,9 @@
                     <tfoot>
                         <tr>
                             <th class="bottom_left_tableData"></th>
-                            <th>Username</th>
-                            <th>Nama</th>
+                            <th>Kode Produk</th>
+                            <th>Nama Produk</th>
+                            <th>Deskripsi</th>
                             <th>Status</th>
                             <th class="bottom_right_tableData"></th>
                         </tr>
@@ -61,7 +63,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Tambah User Baru
+                        Tambah Data Fashion Baru
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -80,43 +82,22 @@
                     <div class="flex flex-col">
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
-                                <label for="username" class="block text-sm font-medium text-batman-900">Username</label>
+                                <label for="kode_fashion" class="block text-sm font-medium text-batman-900">Kode Fashion</label>
                             </div>
                             <div class="col-span-5 col-end-7">
-                                <input type="text" id="username" name="username"
+                                <input type="text" id="kode_fashion" name="kode_fashion"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan username" required>
+                                    placeholder="Masukkan kode fashion" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
-                                <label for="name" class="block text-sm font-medium text-batman-900">Nama</label>
+                                <label for="deskripsi" class="block text-sm font-medium text-batman-900">Deskripsi</label>
                             </div>
                             <div class="col-span-5 col-end-7">
-                                <input type="text" id="name" name="name"
+                                <input type="text" id="deskripsi" deskripsi="name"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan nama" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="password" class="block text-sm font-medium text-batman-900">Password</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="password" id="password" name="password"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan password" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="profile" class="block text-sm font-medium text-batman-900">Profile</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <select name="select_profile" id="select_profile"
-                                    style="width: 100%; height: 38px !important;">
-                                    <option value="">Select profile</option>
-                                </select>
+                                    placeholder="Masukkan deskripsi" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
@@ -163,7 +144,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Tambah User Baru
+                        Edit Data Fashion
                     </h3>
                     <button type="button" id="button_close_modal_edit"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -180,35 +161,25 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
                     <div class="flex flex-col">
-                        <input type="hidden" id="user_id_edit">
+                        <input type="hidden" id="fashion_id_edit">
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
-                                <label for="username_edit" class="block text-sm font-medium text-batman-900">Username</label>
+                                <label for="kode_fashion_edit" class="block text-sm font-medium text-batman-900">Kode Fashion</label>
                             </div>
                             <div class="col-span-5 col-end-7">
-                                <input type="text" id="username_edit" name="username"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-200 block w-full p-2.5"
-                                    placeholder="Masukkan username" disabled readonly>
+                                <input type="text" id="kode_fashion_edit" name="kode_fashion_edit"
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 disabled:bg-gray-200"
+                                    placeholder="Masukkan kode fashion" disabled>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
-                                <label for="name_edit" class="block text-sm font-medium text-batman-900">Nama</label>
+                                <label for="deskripsi_edit" class="block text-sm font-medium text-batman-900">Deskripsi</label>
                             </div>
                             <div class="col-span-5 col-end-7">
-                                <input type="text" id="name_edit" name="name_edit"
+                                <input type="text" id="deskripsi_edit" deskripsi="name"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan nama" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="select_profile_edit" class="block text-sm font-medium text-batman-900">Profile</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <select name="select_profile_edit" id="select_profile_edit" style="width: 100%; height: 38px !important;">
-                                    <option value="">Select profile</option>
-                                </select>
+                                    placeholder="Masukkan deskripsi" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
@@ -229,7 +200,6 @@
 
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                    <button id="button_reset_modal_edit" type="button" class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
                     <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
@@ -258,15 +228,6 @@
 
             dataTable();
 
-            $("#select_profile").select2({
-                dropdownParent: $("#newCreationModal"),
-                placeholder: {
-                    id: '-1',
-                    textw: 'Select an option'
-                },
-                multiple: false
-            });
-
         });
 
         // ========================= DATATABLE =========================
@@ -279,7 +240,7 @@
                 var header_name = $('#tableData thead th').eq($(this).index()).text();
                 var title = header_name.toLowerCase().replace(/\s+/g, "_");
 
-                if (i != 0 && i != 4 && i != 5) {
+                if (i != 0 && i != 4) {
                     $(this).html(
                         `<div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -308,7 +269,7 @@
                 orderCellsTop: true,
                 ajax: {
                     type: 'GET',
-                    url: `{{ route('get-user-list-datatable') }}`,
+                    url: `{{ route('get-produk-list-datatable') }}`,
                     data: {},
                 },
                 columns: [{
@@ -318,12 +279,16 @@
                         searchable: false
                     },
                     {
-                        data: 'username',
-                        name: 'username',
+                        data: 'kode_produk',
+                        name: 'kode_produk',
                     },
                     {
-                        data: 'name',
-                        name: 'name',
+                        data: 'nama_produk',
+                        name: 'nama_produk',
+                    },
+                    {
+                        data: 'deskripsi',
+                        name: 'deskripsi',
                     },
                     {
                         data: 'status',
@@ -360,65 +325,25 @@
 
         $(document).on('click', '#button_reset_modal', function () {
 
-            $('#username').val('');
-            $('#name').val('');
-            $('#password').val('');
-            $('#select_profile').val('').trigger('change');
+            $('#kode_fashion').val('');
+            $('#deskripsi').val('');
             $('#status').prop('checked', true);
 
         });
 
         $(document).on('click', '#button_new', function () {
 
-            $('#username').val('');
-            $('#name').val('');
-            $('#password').val('');
-            $('#select_profile').val('').trigger('change');
+            $('#kode_fashion').val('');
+            $('#deskripsi').val('');
             $('#status').prop('checked', true);
 
-            getAllDataProfile();
-
         });
-
-        function getAllDataProfile() {
-
-            $("#select_profile").html('<option value="">Select profile</option>');
-
-            $.ajax({
-                type: 'GET',
-                url: "{{ url('/get-all-data-profile') }}",
-                dataType: 'json',
-                data: {},
-                success: function(response) {
-                    $.each(response,function(key, value)
-                    {
-                        $("#select_profile").append('<option value="' + value.id + '">' + value.profile_name + '</option>');
-                    });
-                },
-                error: function(error) {
-                    console.log(error.responseJSON);
-                    Swal.fire({
-                        icon: 'error',
-                        title: "Error",
-                        text: error.responseJSON.message ?? 'Failed get list of profile',
-                        showConfirmButton: true,
-                        confirmButtonColor: "#c1141b",
-                        customClass: {
-                            confirmButton: 'custom-confirm-button-swal'
-                        },
-                    });
-                },
-            });
-
-        }
 
         // ========================= SUBMIT NEW DATA =========================
         $(document).on('click', '#button_submit_modal', function(event) {
 
-            var username = $("#username").val();
-            var name = $("#name").val();
-            var password = $("#password").val();
-            var profile_id = $("#select_profile").val();
+            var kode_fashion = $("#kode_fashion").val();
+            var deskripsi = $("#deskripsi").val();
             var status = document.getElementById('status').checked;
 
             if ( status == 1 ) {
@@ -429,13 +354,11 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ url('/post-new-user') }}",
+                url: "{{ url('/post-new-fashion') }}",
                 dataType: 'json',
                 data: {
-                    username: username,
-                    name: name,
-                    password: password,
-                    profile_id: profile_id,
+                    kode_fashion: kode_fashion,
+                    deskripsi: deskripsi,
                     status: flag,
                 },
                 success: function(response) {
@@ -464,7 +387,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed submit user request',
+                        text: error.responseJSON.message ?? 'Failed submit cook food request',
                         target: document.getElementById('newCreationModal'),
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
@@ -480,10 +403,11 @@
         });
 
         $(document).on('click', '.button_edit', function () {
+
             const modalEl = document.getElementById('editModal');
 
-            // Pastikan class Modal dari flowbite tersedia
             if (typeof Modal !== 'undefined') {
+
                 const modal = new Modal(modalEl);
                 modal.show();
 
@@ -496,12 +420,15 @@
                     multiple: false
                 });
 
-                // Ambil ID dari data-id tombol
                 const userId = $(this).data('id');
                 console.log('Edit user ID:', userId);
+
             } else {
+
                 console.error('Flowbite Modal tidak terdeteksi. Pastikan flowbite.min.js sudah dimuat.');
+
             }
+
         });
 
         $(document).on('click', '#button_close_modal_edit', function () {
@@ -509,49 +436,40 @@
             const modalEl = document.getElementById('editModal');
 
             if (typeof Modal !== 'undefined') {
+
                 const modal = new Modal(modalEl);
                 modal.hide();
+
             } else {
+
                 console.error('Flowbite Modal tidak terdeteksi. Pastikan flowbite.min.js sudah dimuat.');
+
             }
-
-        });
-
-        $(document).on('click', '#button_reset_modal_edit', function () {
-
-            $('#username_edit').val('');
-            $('#name_edit').val('');
-            $('#select_profile_edit').val('').trigger('change');
-            $('#status_edit').prop('checked', true);
 
         });
 
         $(document).on('click', '#button_edit_modal', function () {
 
-            // $('#select_profile_edit').val('').trigger('change');
-
             const data_id = $(this).data('id');
 
             $.ajax({
                 type: 'GET',
-                url: "{{ url('/get-old-data-of-user') }}",
+                url: "{{ url('/get-old-data-of-fashion') }}",
                 dataType: 'json',
                 data: {
-                    user_id: data_id,
+                    fashion_id: data_id,
                 },
                 success: function(response) {
-                    $("#user_id_edit").val(response.id);
-                    $("#username_edit").val(response.username);
-                    $("#name_edit").val(response.name);
 
-                    if ( response.is_active == 1 ) {
+                    $("#fashion_id_edit").val(response.id);
+                    $("#kode_fashion_edit").val(response.kode_fashion);
+                    $("#deskripsi_edit").val(response.deskripsi);
+
+                    if ( response.flag == 1 ) {
                         $("#status_edit").attr('checked', true);
-                    } else if ( response.is_active == 0 ) {
+                    } else if ( response.flag == 0 ) {
                         $("#status_edit").attr('checked', false);
                     }
-
-                    $("#select_profile_edit").html('');
-                    getProfileById(response.profile_id);
 
                 },
                 error: function(error) {
@@ -559,7 +477,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed get list of user',
+                        text: error.responseJSON.message ?? 'Failed get list of fashion',
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
                         customClass: {
@@ -571,49 +489,12 @@
 
         });
 
-        function getProfileById(profile_id) {
-
-            $("#select_profile_edit").html('<option value="">Select profile</option>');
-
-            $.ajax({
-                type: 'GET',
-                url: "{{ url('/get-all-data-profile') }}",
-                dataType: 'json',
-                data: {},
-                success: function(response) {
-
-                    $.each(response,function(key, value)
-                    {
-                        if ( value.id == profile_id ) {
-                            $("#select_profile_edit").append('<option value="' + value.id + '" selected>' + value.profile_name + '</option>');
-                        } else {
-                            $("#select_profile_edit").append('<option value="' + value.id + '">' + value.profile_name + '</option>');
-                        }
-                    });
-                },
-                error: function(error) {
-                    console.log(error.responseJSON);
-                    Swal.fire({
-                        icon: 'error',
-                        title: "Error",
-                        text: error.responseJSON.message ?? 'Failed get list of profile',
-                        showConfirmButton: true,
-                        confirmButtonColor: "#c1141b",
-                        customClass: {
-                            confirmButton: 'custom-confirm-button-swal'
-                        },
-                    });
-                },
-            });
-
-        }
-
         // ========================= SUBMIT EDIT DATA =========================
         $(document).on('click', '#button_submit_modal_edit', function() {
 
-            var id = $("#user_id_edit").val();
-            var name = $("#name_edit").val();
-            var profile_id = $("#select_profile_edit").val();
+            var id = $("#fashion_id_edit").val();
+            var kode_fashion = $("#kode_fashion_edit").val();
+            var deskripsi = $("#deskripsi_edit").val();
             var status = document.getElementById('status_edit').checked;
 
             if ( status == 1 ) {
@@ -624,12 +505,12 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ url('/post-edit-user') }}",
+                url: "{{ url('/post-edit-fashion') }}",
                 dataType: 'json',
                 data: {
-                    id_user: id,
-                    name: name,
-                    profile_id: profile_id,
+                    id_fashion: id,
+                    kode_fashion: kode_fashion,
+                    deskripsi: deskripsi,
                     status: flag,
                 },
                 success: function(response) {
@@ -658,7 +539,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed submit user request',
+                        text: error.responseJSON.message ?? 'Failed submit fashion request',
                         target: document.getElementById('editModal'),
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
@@ -668,77 +549,6 @@
                     });
                     $("#button_submit_modal_edit").prop('disabled', false);
                 },
-            });
-
-        });
-
-        // ========================= CLICK BUTTON RESET PASSWORD =========================
-        $(document).on('click', '#button_reset_pw', function() {
-
-            const data_id = $(this).data('id');
-
-            Swal.fire({
-                icon: "warning",
-                title: "Reset Password",
-                text: "Are you sure want to reset the password?",
-                showCancelButton: true,
-                confirmButtonText: "Reset",
-                confirmButtonColor: "#d33",
-                position: 'top-center',
-                customClass: {
-                    popup: 'custom-popup-swal'
-                },
-                showClass: {
-                    popup: 'animate__animated animate__fadeOutUp'
-                },
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'POST',
-                        url: "{{ url('/post-reset-pw') }}",
-                        dataType: 'json',
-                        data: {
-                            user_id: data_id,
-                        },
-                        success: function(response) {
-
-                            return Swal.fire({
-                                title: response.title,
-                                text: response.message,
-                                timer: 5000,
-                                icon: "success",
-                                timerProgressBar: true,
-                                showConfirmButton: true,
-                                confirmButtonColor: "#333333",
-                                customClass: {
-                                    confirmButton: 'custom-confirm-button-swal'
-                                },
-                                willClose: () => {
-                                    if (typeof response.route !== "undefined") {
-                                        window.location.href = response.route;
-                                    }
-                                },
-                            });
-
-                        },
-                        error: function(error) {
-
-                            console.log(error.responseJSON);
-                            Swal.fire({
-                                icon: 'error',
-                                title: "Error",
-                                text: error.responseJSON.message ?? 'Failed submit change password request',
-                                target: document.getElementById('dialog_add'),
-                                showConfirmButton: true,
-                                confirmButtonColor: "#c1141b",
-                                customClass: {
-                                    confirmButton: 'custom-confirm-button-swal'
-                                },
-                            });
-                            $(".submitAdd").prop('disabled', false);
-                        },
-                    });
-                }
             });
 
         });

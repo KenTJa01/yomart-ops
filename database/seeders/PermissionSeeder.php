@@ -221,7 +221,7 @@ class PermissionSeeder extends Seeder
 
         Permission::create([
             'key' => 'create_kelola_toko',
-            'sub_menu_id' => 14,
+            'sub_menu_id' => 15,
         ]);
 
     }

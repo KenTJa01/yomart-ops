@@ -167,6 +167,12 @@
             border-radius: 0.375rem;
             padding: 6px 3px !important;
         }
+
+        .custom-confirm-button-swal{
+            width: 150px !important;
+            border-radius: 10px !important;
+        }
+
     </style>
 
 </head>

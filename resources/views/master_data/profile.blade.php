@@ -21,8 +21,9 @@
                     <thead class="text-sm text-white uppercase bg-batman-900">
                         <tr>
                             <th scope="col" class="top_left_tableData px-6 py-5 !pl-[25px] border-t-0 border-l-0">No. </th>
-                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Profile Code</th>
-                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Profile Name</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Nama Profile</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Deskripsi</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Tipe Profile</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Status</th>
                             <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 90px !important;">
                                 <img src="{{ asset('svg/action.svg') }}" class="w-5 h-5 m-auto">
@@ -36,6 +37,7 @@
                             <th class="bottom_left_tableData"></th>
                             <th>Nama Profile</th>
                             <th>Deskripsi</th>
+                            <th>Tipe Profile</th>
                             <th>Status</th>
                             <th class="bottom_right_tableData"></th>
                         </tr>
@@ -88,6 +90,8 @@
                                 <select name="select_tipe_profile" id="select_tipe_profile"
                                     style="width: 100%; height: 38px !important;">
                                     <option value="">Select tipe profile</option>
+                                    <option value="Legal">Legal</option>
+                                    <option value="Store">Store</option>
                                 </select>
                             </div>
                         </div>
@@ -125,7 +129,7 @@
                                                 <div class="hs-accordion hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-1 active" role="treeitem" aria-expanded="true" id="hs-checkbox-tree-heading-{{ Str::slug($menu['menu_name'], '-') }}" data-hs-tree-view-item='{ "value": "{{ Str::slug($menu['menu_name'], '_') }}", "isDir": true }'>
 
                                                     <!-- Master Data Accordion Heading -->
-                                                    <div class="hs-accordion-heading py-0.5 rounded-md flex items-center gap-x-0.5 w-full hs-tree-view-selected:bg-gray-100 ">
+                                                    <div class="level_1 hs-accordion-heading py-0.5 rounded-md flex items-center gap-x-0.5 w-full hs-tree-view-selected:bg-gray-100 ">
                                                         <button class="hs-accordion-toggle size-6 flex justify-center items-center hover:bg-gray-100 rounded-md focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none " aria-expanded="true" aria-controls="{{ Str::slug($menu['menu_name'], '-') }}">
                                                             <svg class="size-4 text-gray-800 " xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                                                 <path d="M5 12h14"></path>
@@ -155,7 +159,7 @@
                                                                 <div class="hs-accordion hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-2 active" role="treeitem" aria-expanded="true" id="{{ Str::slug($submenu['submenu_name'], '-') }}-heading-collapse" data-hs-tree-view-item='{ "value": "{{ Str::slug($submenu['submenu_name'], '_') }}", "isDir": true }'>
 
                                                                     <!-- Master User Accordion Heading -->
-                                                                    <div class="hs-accordion-heading py-0.5 rounded-md flex items-center gap-x-0.5 w-full hs-tree-view-selected:bg-gray-100 ">
+                                                                    <div class="level_2 hs-accordion-heading py-0.5 rounded-md flex items-center gap-x-0.5 w-full hs-tree-view-selected:bg-gray-100 ">
                                                                         <button class="hs-accordion-toggle size-6 flex justify-center items-center hover:bg-gray-100 rounded-md focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" aria-expanded="true" aria-controls="{{ Str::slug($submenu['submenu_name'], '-') }}-collapse">
                                                                             <svg class="size-4 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                                                                 <path d="M5 12h14"></path>
@@ -178,7 +182,7 @@
                                                                     <div id="{{ Str::slug($submenu['submenu_name'], '-') }}-collapse" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="group" aria-labelledby="{{ Str::slug($submenu['submenu_name'], '-') }}-heading-collapse">
 
                                                                         <!-- Master User Accordion Group -->
-                                                                        <div class="ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-300 "data-hs-nested-draggable="">
+                                                                        <div class="level_3 ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-300 "data-hs-nested-draggable="">
 
                                                                             @foreach($submenu['actions'] as $action)
                                                                                 <div style="padding-left: 32px;" class="ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-100 py-0.5 px-1.5 rounded-md hs-tree-view-selected:bg-gray-100 hs-dragged:bg-blue-100 hs-dragged:rounded nested-2-3" role="treeitem" data-hs-tree-view-item='{ "value": "{{ $action['key'] }}", "isDir": false }'>
@@ -240,7 +244,7 @@
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
                     <button id="button_reset_modal" type="button"
                         class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
-                    <button id="button_submit_modal" data-modal-hide="newCreationModal" type="button"
+                    <button id="button_submit_modal" type="button"
                         class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
@@ -458,9 +462,8 @@
             $('#tableData tfoot th').each(function(i) {
                 var header_name = $('#tableData thead th').eq($(this).index()).text();
                 var title = header_name.toLowerCase().replace(/\s+/g, "_");
-                console.log(header_name);
 
-                if (i != 0 && i != 4 && i != 5) {
+                if (i != 0 && i != 5) {
                     $(this).html(
                         `<div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -501,12 +504,16 @@
                         searchable: false
                     },
                     {
-                        data: 'profile_code',
-                        name: 'profile_code',
-                    },
-                    {
                         data: 'profile_name',
                         name: 'profile_name',
+                    },
+                    {
+                        data: 'description',
+                        name: 'description',
+                    },
+                    {
+                        data: 'tipe_profile',
+                        name: 'tipe_profile',
                     },
                     {
                         data: 'status',
@@ -526,7 +533,7 @@
                 columnDefs: [
                     {
                         className: "dt-center border border-batman-100",
-                        targets: [0, 1, 2, 3, 4]
+                        targets: [0, 1, 2, 3, 4, 5]
                     },
                 ],
                 language: {
@@ -543,53 +550,147 @@
 
         }
 
-        $(document).on('click', '#button_reset_modal', function() {
+        $(document).on('click', '#button_reset_modal', function () {
 
+            // Reset form input
             $('#select_tipe_profile').val('').trigger('change');
             $('#profile_name').val('');
             $('#description').val('');
-
             $('#status').prop('checked', true);
-            console.log($("#master-data-heading-collapse").val());
+
+            // Reset semua checkbox
+            const allCheckboxes = document.querySelectorAll('#hs-tree-view-checkbox input[type="checkbox"]');
+            allCheckboxes.forEach(cb => {
+                cb.checked = false;
+                cb.removeAttribute('checked');
+            });
+
+            // Hapus class aktif & state accordion dari tree item
+            const allTreeItems = document.querySelectorAll('#hs-tree-view-checkbox [role="treeitem"]');
+            allTreeItems.forEach(el => {
+                el.classList.remove('active');
+                el.removeAttribute('aria-expanded');
+            });
+
+            // Re-init TreeView jika HS.TreeView tersedia
+            const treeEl = document.querySelector('#hs-tree-view-checkbox');
+            if (treeEl && window.HS && window.HS.TreeView && typeof window.HS.TreeView.getInstance === 'function') {
+                const treeInstance = HS.TreeView.getInstance(treeEl, true);
+                if (treeInstance) {
+                    treeInstance.init();
+                }
+            }
 
         });
 
         $(document).on('click', '#button_new', function () {
 
+            // Reset form input
             $('#select_tipe_profile').val('').trigger('change');
             $('#profile_name').val('');
             $('#description').val('');
-
             $('#status').prop('checked', true);
 
+            // Reset semua checkbox
+            const allCheckboxes = document.querySelectorAll('#hs-tree-view-checkbox input[type="checkbox"]');
+            allCheckboxes.forEach(cb => {
+                cb.checked = false;
+                cb.removeAttribute('checked');
+            });
 
-            // getAllDataMenu();
+            // Hapus class aktif & state accordion dari tree item
+            const allTreeItems = document.querySelectorAll('#hs-tree-view-checkbox [role="treeitem"]');
+            allTreeItems.forEach(el => {
+                el.classList.remove('active');
+                el.removeAttribute('aria-expanded');
+            });
+
+            // Re-init TreeView jika HS.TreeView tersedia
+            const treeEl = document.querySelector('#hs-tree-view-checkbox');
+            if (treeEl && window.HS && window.HS.TreeView && typeof window.HS.TreeView.getInstance === 'function') {
+                const treeInstance = HS.TreeView.getInstance(treeEl, true);
+                if (treeInstance) {
+                    treeInstance.init();
+                }
+            }
 
         });
 
-        // function getAllDataMenu() {
 
-        //     $.ajax({
-        //         type: 'GET',
-        //         url: "{{ url('/get-all-data-menu') }}",
-        //         dataType: 'json',
-        //         data: {},
-        //         success: function(response) {
 
-        //             console.log(response);
+        // ========================= SUBMIT NEW DATA =========================
+        $(document).on('click', '#button_submit_modal', function(event) {
 
-        //         },
-        //         error: function(error) {
-        //             console.log(error.responseJSON);
-        //             Swal.fire({
-        //                 icon: 'error',
-        //                 title: "Error",
-        //                 text: error.responseJSON.message ?? 'Failed get list of profile',
-        //             });
-        //         },
-        //     });
+            var tipe_profile = $("#select_tipe_profile").val();
+            var profile_name = $("#profile_name").val();
+            var description = $("#description").val();
+            var status = document.getElementById('status').checked;
 
-        // }
+            const checked_level_1 = document.querySelectorAll('.level_1 input[type="checkbox"]:checked');
+            const checked_level_2 = document.querySelectorAll('.level_2 input[type="checkbox"]:checked');
+            const checked_level_3 = document.querySelectorAll('.level_3 input[type="checkbox"]:checked');
+
+            const values_level_1 = Array.from(checked_level_1).map(cb => cb.value);
+            const values_level_2 = Array.from(checked_level_2).map(cb => cb.value);
+            const values_level_3 = Array.from(checked_level_3).map(cb => cb.value);
+
+            if ( status == 1 ) {
+                var flag = 1;
+            } else {
+                var flag = 0;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ url('/post-new-profile') }}",
+                dataType: 'json',
+                data: {
+                    tipe_profile: tipe_profile,
+                    profile_name: profile_name,
+                    description: description,
+                    data_permission: values_level_3,
+                    status: flag,
+                },
+                success: function(response) {
+
+                    return Swal.fire({
+                        title: response.title,
+                        text: response.message,
+                        timer: 5000,
+                        icon: "success",
+                        timerProgressBar: true,
+                        showConfirmButton: true,
+                        confirmButtonColor: "#333333",
+                        customClass: {
+                            confirmButton: 'custom-confirm-button-swal'
+                        },
+                        willClose: () => {
+                            if (typeof response.route !== "undefined") {
+                                window.location.href = response.route;
+                            }
+                        },
+                    });
+                },
+                error: function(error) {
+
+                    console.log(error.responseJSON);
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Error",
+                        text: error.responseJSON.message ?? 'Failed submit user request',
+                        target: document.getElementById('newCreationModal'),
+                        showConfirmButton: true,
+                        confirmButtonColor: "#c1141b",
+                        customClass: {
+                            confirmButton: 'custom-confirm-button-swal'
+                        },
+                    });
+                    $("#button_submit_modal").prop('disabled', false);
+                },
+            });
+
+
+        });
 
         $(document).on('click', '.button_edit', function() {
             const modalEl = document.getElementById('editModal');

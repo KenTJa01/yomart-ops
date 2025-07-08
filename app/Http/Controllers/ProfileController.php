@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\CommonCustomException;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Permission;
+use App\Models\Profile;
+use App\Models\Profile_menu;
+use App\Models\Profile_permission;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -106,6 +113,96 @@ class ProfileController extends Controller
             })
             ->rawColumns(['actions'])
             ->make(true);
+    }
+
+    public function postNewProfile(Request $request)
+    {
+
+        $user = Auth::user();
+
+        /** Validate Input */
+        $validate = Validator::make($request->all(), [
+            'tipe_profile' => ['required', 'string'],
+            'profile_name' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'data_permission' => ['required'],
+            'status' => ['required'],
+        ]);
+
+
+        if ($validate->fails()) {
+            throw new ValidationException($validate);
+        }
+        (array) $validated = $validate->validated();
+
+        $tipe_profile = $validated['tipe_profile'];
+        $profile_name = $validated['profile_name'];
+        $description = $validated['description'];
+        $status = $validated['status'];
+
+        $data_permissions = $validated['data_permission'];
+
+        DB::beginTransaction();
+        try {
+
+            $profileData = Profile::create([
+                'profile_name' => $profile_name,
+                'tipe_profile' => $tipe_profile,
+                'description' => $description,
+                'flag' => $status,
+                'created_by' => $user?->id,
+                'updated_by' => $user?->id,
+            ]);
+
+            foreach ($data_permissions as $dp) {
+
+                $permission_data = Permission::where('key', $dp)->first();
+
+                Profile_permission::firstOrCreate([
+                    'profile_id' => $profileData->id,
+                    'permission_id' => $permission_data->id,
+                ], [
+                    'created_by' => $user?->id,
+                    'updated_by' => $user?->id,
+                ]);
+
+                $profileMenu = Profile_menu::where('profile_id', $profileData->id)->where('sub_menu_id', $permission_data->sub_menu_id)->first();
+
+                if ($profileMenu == null){
+                    Profile_menu::firstOrCreate([
+                        'profile_id' => $profileData->id,
+                        'sub_menu_id' => $permission_data->sub_menu_id,
+                    ], [
+                        'created_by' => $user?->id,
+                        'updated_by' => $user?->id,
+                    ]);
+                }
+
+            }
+
+            (string) $title = 'Success';
+            (string) $message = "Data Profile telah berhasil tersimpan dengan nama profile: ".$profile_name;
+            (array) $data = [
+                'trx_number' => $profile_name,
+            ];
+            (string) $route = route('/master_data/profile');
+
+            DB::commit();
+            return response()->json([
+                'title' => $title,
+                'message' => $message,
+                'route' => $route,
+                'data' => $data,
+            ]);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            Log::warning('Validation error when submit profile request', ['userId' => $user?->id, 'userName' => $user?->name, 'errors' => $e->getMessage()]);
+            throw $e;
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            throw new CommonCustomException('Failed to submit profile request', 422, $e);
+        }
+
     }
 
 }
