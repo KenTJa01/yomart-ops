@@ -4,7 +4,7 @@
 
         <div class="bg-white border border-batman-50 rounded-lg p-4 shadow-sm flex flex-col">
             <div class="flex items-center">
-                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-batman-900 hover:bg-batman-800 focus:ring-4 focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
+                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
                     <img src="{{ asset('svg/plus.svg') }}" class="w-3 h-3 me-2" alt="Plus Icon">
                     Tambah
                 </button>
@@ -22,7 +22,7 @@
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Kode Fashion</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Deskripsi</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Status</th>
-                            <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 120px !important;">
+                            <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 90px !important;">
                                 <img src="{{ asset('svg/action.svg') }}" class="w-5 h-5 m-auto">
                             </th>
                         </tr>
@@ -61,7 +61,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Tambah Data Fashion Baru
+                        Tambah Data Fashion
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -117,7 +117,7 @@
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
                     <button id="button_reset_modal" type="button" class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
-                    <button id="button_submit_modal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal" type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -198,7 +198,7 @@
 
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -381,7 +381,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed submit cook food request',
+                        text: error.responseJSON.message ?? 'Failed submit fashion request',
                         target: document.getElementById('newCreationModal'),
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",

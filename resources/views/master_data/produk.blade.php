@@ -4,7 +4,7 @@
 
         <div class="bg-white border border-batman-50 rounded-lg p-4 shadow-sm flex flex-col">
             <div class="flex items-center">
-                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-batman-900 hover:bg-batman-800 focus:ring-4 focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
+                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
                     <img src="{{ asset('svg/plus.svg') }}" class="w-3 h-3 me-2" alt="Plus Icon">
                     Tambah
                 </button>
@@ -23,7 +23,7 @@
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Nama Produk</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Deskripsi</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Status</th>
-                            <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 120px !important;">
+                            <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 90px !important;">
                                 <img src="{{ asset('svg/action.svg') }}" class="w-5 h-5 m-auto">
                             </th>
                         </tr>
@@ -63,7 +63,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Tambah Data Fashion Baru
+                        Tambah Data Produk
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -82,12 +82,22 @@
                     <div class="flex flex-col">
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
-                                <label for="kode_fashion" class="block text-sm font-medium text-batman-900">Kode Fashion</label>
+                                <label for="kode_produk" class="block text-sm font-medium text-batman-900">Kode Produk</label>
                             </div>
                             <div class="col-span-5 col-end-7">
-                                <input type="text" id="kode_fashion" name="kode_fashion"
+                                <input type="text" id="kode_produk" name="kode_produk"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan kode fashion" required>
+                                    placeholder="Masukkan kode produk" required>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
+                            <div class="col-start-1 col-end-1">
+                                <label for="nama_produk" class="block text-sm font-medium text-batman-900">Nama Produk</label>
+                            </div>
+                            <div class="col-span-5 col-end-7">
+                                <input type="text" id="nama_produk" name="nama_produk"
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Masukkan nama produk" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
@@ -119,7 +129,7 @@
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
                     <button id="button_reset_modal" type="button" class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
-                    <button id="button_submit_modal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal" type="button" class="text-white bg-batman-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -144,7 +154,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Edit Data Fashion
+                        Edit Data Produk
                     </h3>
                     <button type="button" id="button_close_modal_edit"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -161,15 +171,25 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
                     <div class="flex flex-col">
-                        <input type="hidden" id="fashion_id_edit">
+                        <input type="hidden" id="produk_id_edit">
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
                             <div class="col-start-1 col-end-1">
-                                <label for="kode_fashion_edit" class="block text-sm font-medium text-batman-900">Kode Fashion</label>
+                                <label for="kode_produk_edit" class="block text-sm font-medium text-batman-900">Kode Produk</label>
                             </div>
                             <div class="col-span-5 col-end-7">
-                                <input type="text" id="kode_fashion_edit" name="kode_fashion_edit"
+                                <input type="text" id="kode_produk_edit" name="kode_produk_edit"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 disabled:bg-gray-200"
-                                    placeholder="Masukkan kode fashion" disabled>
+                                    placeholder="Masukkan kode produk" disabled>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
+                            <div class="col-start-1 col-end-1">
+                                <label for="nama_produk_edit" class="block text-sm font-medium text-batman-900">Nama Produk</label>
+                            </div>
+                            <div class="col-span-5 col-end-7">
+                                <input type="text" id="nama_produk_edit" name="nama_produk_edit"
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 disabled:bg-gray-200"
+                                    placeholder="Masukkan kode produk">
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
@@ -200,7 +220,7 @@
 
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-batman-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -240,7 +260,7 @@
                 var header_name = $('#tableData thead th').eq($(this).index()).text();
                 var title = header_name.toLowerCase().replace(/\s+/g, "_");
 
-                if (i != 0 && i != 4) {
+                if (i != 0 && i != 5) {
                     $(this).html(
                         `<div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -325,7 +345,8 @@
 
         $(document).on('click', '#button_reset_modal', function () {
 
-            $('#kode_fashion').val('');
+            $('#kode_produk').val('');
+            $('#nama_produk').val('');
             $('#deskripsi').val('');
             $('#status').prop('checked', true);
 
@@ -333,7 +354,8 @@
 
         $(document).on('click', '#button_new', function () {
 
-            $('#kode_fashion').val('');
+            $('#kode_produk').val('');
+            $('#nama_produk').val('');
             $('#deskripsi').val('');
             $('#status').prop('checked', true);
 
@@ -342,7 +364,8 @@
         // ========================= SUBMIT NEW DATA =========================
         $(document).on('click', '#button_submit_modal', function(event) {
 
-            var kode_fashion = $("#kode_fashion").val();
+            var kode_produk = $("#kode_produk").val();
+            var nama_produk = $("#nama_produk").val();
             var deskripsi = $("#deskripsi").val();
             var status = document.getElementById('status').checked;
 
@@ -354,10 +377,11 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ url('/post-new-fashion') }}",
+                url: "{{ url('/post-new-produk') }}",
                 dataType: 'json',
                 data: {
-                    kode_fashion: kode_fashion,
+                    kode_produk: kode_produk,
+                    nama_produk: nama_produk,
                     deskripsi: deskripsi,
                     status: flag,
                 },
@@ -387,7 +411,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed submit cook food request',
+                        text: error.responseJSON.message ?? 'Failed submit produk request',
                         target: document.getElementById('newCreationModal'),
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
@@ -454,15 +478,16 @@
 
             $.ajax({
                 type: 'GET',
-                url: "{{ url('/get-old-data-of-fashion') }}",
+                url: "{{ url('/get-old-data-of-produk') }}",
                 dataType: 'json',
                 data: {
-                    fashion_id: data_id,
+                    produk_id: data_id,
                 },
                 success: function(response) {
 
-                    $("#fashion_id_edit").val(response.id);
-                    $("#kode_fashion_edit").val(response.kode_fashion);
+                    $("#produk_id_edit").val(response.id);
+                    $("#kode_produk_edit").val(response.kode_produk);
+                    $("#nama_produk_edit").val(response.nama_produk);
                     $("#deskripsi_edit").val(response.deskripsi);
 
                     if ( response.flag == 1 ) {
@@ -477,7 +502,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed get list of fashion',
+                        text: error.responseJSON.message ?? 'Failed get list of produk',
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
                         customClass: {
@@ -492,8 +517,9 @@
         // ========================= SUBMIT EDIT DATA =========================
         $(document).on('click', '#button_submit_modal_edit', function() {
 
-            var id = $("#fashion_id_edit").val();
-            var kode_fashion = $("#kode_fashion_edit").val();
+            var id = $("#produk_id_edit").val();
+            var kode_produk = $("#kode_produk_edit").val();
+            var nama_produk = $("#nama_produk_edit").val();
             var deskripsi = $("#deskripsi_edit").val();
             var status = document.getElementById('status_edit').checked;
 
@@ -505,11 +531,12 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ url('/post-edit-fashion') }}",
+                url: "{{ url('/post-edit-produk') }}",
                 dataType: 'json',
                 data: {
-                    id_fashion: id,
-                    kode_fashion: kode_fashion,
+                    id_produk: id,
+                    kode_produk: kode_produk,
+                    nama_produk: nama_produk,
                     deskripsi: deskripsi,
                     status: flag,
                 },

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use App\Models\Profile;
+use App\Models\Submenu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +13,6 @@ class MasterDataController extends Controller
 
     public function getAllDataProfile()
     {
-
         $data = Profile::where('flag', 1)->get();
         return response()->json($data);
     }
@@ -63,5 +64,19 @@ class MasterDataController extends Controller
 
         return response()->json($result);
 
+    }
+
+    public function getAllDataSubMenu()
+    {
+
+        $data = Submenu::all();
+        return response()->json($data);
+    }
+
+    public function getAllDataPermission()
+    {
+
+        $data = Permission::all();
+        return response()->json($data);
     }
 }

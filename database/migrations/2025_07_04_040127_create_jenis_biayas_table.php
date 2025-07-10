@@ -15,8 +15,8 @@ return new class extends Migration
 
             $table->bigIncrements("id");
             $table->string("kode_jenis_biaya")->unique();
-            $table->string("tipe_jenis_biaya");
-            $table->string("deksripsi");
+            $table->string("jenis_biaya");
+            $table->string("deskripsi");
             $table->integer("flag")->default(1);
             $table->timestamps();
             $table->bigInteger("created_by");

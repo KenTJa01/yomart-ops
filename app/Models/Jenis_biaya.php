@@ -15,7 +15,7 @@ class Jenis_biaya extends Model
 
     protected $fillable = [
         'kode_jenis_biaya',
-        'tipe_jenis_biaya',
+        'jenis_biaya',
         'deskripsi',
         'flag',
         'created_by',

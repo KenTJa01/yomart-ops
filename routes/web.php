@@ -4,11 +4,14 @@ use App\Http\Controllers\BakeryController;
 use App\Http\Controllers\CookFoodController;
 use App\Http\Controllers\FashionController;
 use App\Http\Controllers\FreshController;
+use App\Http\Controllers\JenisBiayaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasterDataController;
+use App\Http\Controllers\PengajuanObjekController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -31,6 +34,8 @@ Route::middleware('auth')->group(function () {
     // ========================= MASTER DATA =========================
     Route::get('/get-all-data-profile', [MasterDataController::class, 'getAllDataProfile'])->name('get-all-data-profile');
     Route::get('/get-all-data-menu', [MasterDataController::class, 'getAllDataMenu'])->name('get-all-data-menu');
+    Route::get('/get-all-data-sub-menu', [MasterDataController::class, 'getAllDataSubMenu'])->name('get-all-data-sub-menu');
+    Route::get('/get-all-data-permission', [MasterDataController::class, 'getAllDataPermission'])->name('get-all-data-permission');
 
     // ========================= MASTER USER =========================
     Route::get('/master_data/user', [UserController::class, 'MasterUserPage'])->name('/master_data/user');
@@ -44,6 +49,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/master_data/profile', [ProfileController::class, 'MasterProfilePage'])->name('/master_data/profile');
     Route::get('/get-profile-list-datatable', [ProfileController::class, 'getProfileListDatatable'])->name('get-profile-list-datatable');
     Route::post('/post-new-profile', [ProfileController::class, 'postNewProfile'])->name('post-new-profile');
+    Route::get('/get-old-data-of-profile', [ProfileController::class, 'getOldDataOfProfile'])->name('get-old-data-of-profile');
+    Route::get('/get-profile-permission-by-id', [ProfileController::class, 'getProfilePermissionById'])->name('get-profile-permission-by-id');
+    Route::get('/get-profile-menu-by-id', [ProfileController::class, 'getProfileMenuById'])->name('get-profile-menu-by-id');
 
     // ========================= MASTER BAKERY =========================
     Route::get('/master_data/bakery', [BakeryController::class, 'MasterBakeryPage'])->name('/master_data/bakery');
@@ -74,10 +82,29 @@ Route::middleware('auth')->group(function () {
     Route::post('/post-edit-fresh', [FreshController::class, 'postEditFresh'])->name('post-edit-fresh');
 
     // ========================= MASTER JENIS BIAYA =========================
+    Route::get('/master_data/jenis_biaya', [JenisBiayaController::class, 'MasterJenisBiayaPage'])->name('/master_data/jenis_biaya');
+    Route::get('/get-jenis-biaya-list-datatable', [JenisBiayaController::class, 'getJenisBiayaListDatatable'])->name('get-jenis-biaya-list-datatable');
+    Route::post('/post-new-jenis-biaya', [JenisBiayaController::class, 'postNewJenisBiaya'])->name('post-new-jenis-biaya');
+    Route::get('/get-old-data-of-jenis-biaya', [JenisBiayaController::class, 'getOldDataOfJenisBiaya'])->name('get-old-data-of-jenis-biaya');
+    Route::post('/post-edit-jenis-biaya', [JenisBiayaController::class, 'postEditJenisBiaya'])->name('post-edit-jenis-biaya');
 
     // ========================= MASTER PRODUK =========================
     Route::get('/master_data/produk', [ProdukController::class, 'MasterProdukPage'])->name('/master_data/produk');
     Route::get('/get-produk-list-datatable', [ProdukController::class, 'getProdukListDatatable'])->name('get-produk-list-datatable');
+    Route::post('/post-new-produk', [ProdukController::class, 'postNewProduk'])->name('post-new-produk');
+    Route::get('/get-old-data-of-produk', [ProdukController::class, 'getOldDataOfProduk'])->name('get-old-data-of-produk');
+    Route::post('/post-edit-produk', [ProdukController::class, 'postEditProduk'])->name('post-edit-produk');
+
+    // ========================= MASTER VENDOR =========================
+    Route::get('/master_data/vendor', [VendorController::class, 'MasterVendorPage'])->name('/master_data/vendor');
+    Route::get('/get-vendor-list-datatable', [VendorController::class, 'getVendorListDatatable'])->name('get-vendor-list-datatable');
+    Route::post('/post-new-vendor', [VendorController::class, 'postNewVendor'])->name('post-new-vendor');
+    Route::get('/get-old-data-of-vendor', [VendorController::class, 'getOldDataOfVendor'])->name('get-old-data-of-vendor');
+    Route::post('/post-edit-vendor', [VendorController::class, 'postEditVendor'])->name('post-edit-vendor');
+
+
+    // ========================= PENGAJUAN OBJEK =========================
+    Route::get('/kelola_lokasi/pengajuan_objek', [PengajuanObjekController::class, 'PengajuanObjekPage'])->name('/kelola_lokasi/pengajuan_objek');
 
 });
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigIncrements("id");
             $table->string("kode_produk")->unique();
             $table->string("nama_produk");
-            $table->string("deksripsi");
+            $table->string("deskripsi");
             $table->integer("flag")->default(1);
             $table->timestamps();
             $table->bigInteger("created_by");

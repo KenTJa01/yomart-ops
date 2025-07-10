@@ -205,4 +205,22 @@ class ProfileController extends Controller
 
     }
 
+    public function getOldDataOfProfile(Request $request)
+    {
+        $data = Profile::where('id', $request->profile_id)->first();
+        return response()->json($data);
+    }
+
+    public function getProfilePermissionById(Request $request)
+    {
+        $dataPermissions = Profile_permission::where('profile_id', $request->profile_id)->pluck('permission_id')->toArray();
+        return response()->json($dataPermissions);
+    }
+
+    public function getProfileMenuById(Request $request)
+    {
+        $dataPermissions = Profile_menu::where('profile_id', $request->profile_id)->pluck('sub_menu_id')->toArray();
+        return response()->json($dataPermissions);
+    }
+
 }

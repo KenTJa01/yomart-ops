@@ -4,7 +4,7 @@
 
         <div class="bg-white border border-batman-50 rounded-lg p-4 shadow-sm flex flex-col">
             <div class="flex items-center">
-                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-batman-900 hover:bg-batman-800 focus:ring-4 focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
+                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
                     <img src="{{ asset('svg/plus.svg') }}" class="w-3 h-3 me-2" alt="Plus Icon">
                     Tambah
                 </button>
@@ -61,7 +61,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Tambah User Baru
+                        Tambah Data User
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -138,7 +138,7 @@
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
                     <button id="button_reset_modal" type="button" class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
-                    <button id="button_submit_modal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal" type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -163,7 +163,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Tambah User Baru
+                        Edit Data User
                     </h3>
                     <button type="button" id="button_close_modal_edit"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -229,8 +229,7 @@
 
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                    <button id="button_reset_modal_edit" type="button" class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
-                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -514,15 +513,6 @@
             } else {
                 console.error('Flowbite Modal tidak terdeteksi. Pastikan flowbite.min.js sudah dimuat.');
             }
-
-        });
-
-        $(document).on('click', '#button_reset_modal_edit', function () {
-
-            $('#username_edit').val('');
-            $('#name_edit').val('');
-            $('#select_profile_edit').val('').trigger('change');
-            $('#status_edit').prop('checked', true);
 
         });
 

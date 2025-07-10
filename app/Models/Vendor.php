@@ -21,7 +21,6 @@ class Vendor extends Model
         'bank',
         'nama_perusahaan',
         'flag',
-        'flag',
         'created_by',
         'updated_by',
     ];

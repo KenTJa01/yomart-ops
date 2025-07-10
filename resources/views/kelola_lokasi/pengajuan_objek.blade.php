@@ -8,7 +8,7 @@
                     <img src="{{ asset('svg/plus.svg') }}" class="w-3 h-3 me-2" alt="Plus Icon">
                     Tambah
                 </button>
-                <span class="text-lg ml-2 font-semibold text-batman-900">Master Fresh</span>
+                <span class="text-lg ml-2 font-semibold text-batman-900">Pengajuan Objek</span>
             </div>
 
             <hr class="my-4">
@@ -19,8 +19,12 @@
                     <thead class="text-sm text-white uppercase bg-batman-900">
                         <tr>
                             <th scope="col" class="top_left_tableData px-6 py-5 !pl-[25px] border-t-0 border-l-0">No.</th>
-                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Kode Fresh</th>
-                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Deskripsi</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Nama Vendor</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">No. Telp</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">No. Rekening</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Pemilik Rekening</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Bank</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Nama Perusahan</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Status</th>
                             <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 90px !important;">
                                 <img src="{{ asset('svg/action.svg') }}" class="w-5 h-5 m-auto">
@@ -32,8 +36,12 @@
                     <tfoot>
                         <tr>
                             <th class="bottom_left_tableData"></th>
-                            <th>Kode Fresh</th>
-                            <th>Deskripsi</th>
+                            <th>Nama Vendor</th>
+                            <th>No. Telp</th>
+                            <th>No. Rekening</th>
+                            <th>Pemilik Rekening</th>
+                            <th>Bank</th>
+                            <th>Nama Perusahan</th>
                             <th>Status</th>
                             <th class="bottom_right_tableData"></th>
                         </tr>
@@ -53,7 +61,7 @@
         <div class="absolute inset-0 bg-dark/5 backdrop-blur-xs w-full"></div>
 
 
-        <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <div class="relative p-4 w-full !max-w-[1000px] max-h-full">
 
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow-sm ">
@@ -61,7 +69,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Tambah Data Fresh
+                        Tambah Data Fashion
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -75,42 +83,99 @@
                     </button>
                 </div>
 
+                <style>
+                    .vertical_line_two_row {
+                        border: none;
+                        border-left: 1px solid rgb(206, 206, 206);
+                        height: 105px;
+                        margin: 0 30px;
+                    }
+                </style>
+
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
                     <div class="flex flex-col">
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="kode_fresh" class="block text-sm font-medium text-batman-900">Kode Fresh</label>
+
+                        <table style="width: 100%;">
+                            <tr>
+                                {{-- PROFILE CODE --}}
+                                <td class="label_form">Tanggal Waktu</td>
+                                <td class="" style="margin: 0; padding: 0;">
+                                    <input type="date" id="input-email-label" class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="you@site.com">
+                                </td>
+
+                                {{-- VERTICAL LINE --}}
+                                <td style="width: 4%" rowspan="2">
+                                    <hr class="vertical_line_two_row">
+                                </td>
+
+                                {{-- PROFILE NAME --}}
+                                <td class="label_form">Objek Sewa/Beli</td>
+                                <td class="" style="margin: 0; padding: 0;">
+                                    <input type="text" id="input-email-label" class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="you@site.com">
+                                </td>
+                            </tr>
+                            <tr>
+                                {{-- STATUS --}}
+                                <td class="label_form" for="status">Jenis Objek</td>
+                                <td class="container_input_form" style="margin: 0; padding: 0;">
+                                    <input type="text" id="input-email-label" class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="you@site.com">
+                                </td>
+                                <td></td>
+                                <td class="" style="margin: 0; padding: 0;"></td>
+                            </tr>
+                        </table>
+
+
+                        <div class="mb-4 border-b border-gray-200">
+                            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+                                <li class="me-2" role="presentation">
+                                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Alamat & Spesifikasi</button>
+                                </li>
+                                <li class="me-2" role="presentation">
+                                    <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Data Pemilik</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="default-tab-content">
+                            <div class="hidden p-4 rounded-lg bg-gray-50" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        {{-- PROFILE CODE --}}
+                                        <td class="label_form">Tanggal Waktu</td>
+                                        <td class="" style="margin: 0; padding: 0;">
+                                            <input type="date" id="input-email-label" class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="you@site.com">
+                                        </td>
+
+                                        {{-- VERTICAL LINE --}}
+                                        <td style="width: 4%" rowspan="2">
+                                            <hr class="vertical_line_two_row">
+                                        </td>
+
+                                        {{-- PROFILE NAME --}}
+                                        <td class="label_form">Objek Sewa/Beli</td>
+                                        <td class="" style="margin: 0; padding: 0;">
+                                            <input type="text" id="input-email-label" class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="you@site.com">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        {{-- STATUS --}}
+                                        <td class="label_form" for="status">Jenis Objek</td>
+                                        <td class="container_input_form" style="margin: 0; padding: 0;">
+                                            <input type="text" id="input-email-label" class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="you@site.com">
+                                        </td>
+                                        <td></td>
+                                        <td class="" style="margin: 0; padding: 0;"></td>
+                                    </tr>
+                                </table>
                             </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="text" id="kode_fresh" name="kode_fresh"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan kode fresh" required>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
                             </div>
                         </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="deskripsi" class="block text-sm font-medium text-batman-900">Deskripsi</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="text" id="deskripsi" deskripsi="name"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan deskripsi" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="status" class="block text-sm font-medium text-batman-900">Status</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input id="status" type="checkbox" value="" class="sr-only peer" checked>
-                                    <div
-                                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
+
+
+
                     </div>
                 </div>
 
@@ -142,7 +207,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Edit Data Fresh
+                        Edit Data Fashion
                     </h3>
                     <button type="button" id="button_close_modal_edit"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -159,40 +224,82 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
                     <div class="flex flex-col">
-                        <input type="hidden" id="fresh_id_edit">
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="kode_fresh_edit" class="block text-sm font-medium text-batman-900">Kode Fresh</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="text" id="kode_fresh_edit" name="kode_fresh_edit"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 disabled:bg-gray-200"
-                                    placeholder="Masukkan kode fresh" disabled>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="deskripsi_edit" class="block text-sm font-medium text-batman-900">Deskripsi</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="text" id="deskripsi_edit" deskripsi="name"
+                        <input type="hidden" id="vendor_id_edit">
+                        <table>
+                            <tr>
+                                <td style="width: 23%">
+                                    <label for="nama_vendor_edit" class="block text-sm font-medium text-batman-900">Nama Vendor</label>
+                                </td>
+                                <td style="width: 77%">
+                                    <input type="text" id="nama_vendor_edit" name="nama_vendor_edit" style="margin-bottom: 5px !important"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan deskripsi" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="status_edit" class="block text-sm font-medium text-batman-900">Status</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input id="status_edit" type="checkbox" value="" class="sr-only peer" checked>
-                                    <div
-                                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
+                                    placeholder="Masukkan nama vendor" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 23%">
+                                    <label for="no_telp_edit" class="block text-sm font-medium text-batman-900">No. Telp</label>
+                                </td>
+                                <td style="width: 77%">
+                                    <input type="text" id="no_telp_edit" name="no_telp_edit" style="margin-bottom: 5px !important"
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Masukkan nomor telepon" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 23%">
+                                    <label for="no_rekening_edit" class="block text-sm font-medium text-batman-900">No. Rekening</label>
+                                </td>
+                                <td style="width: 77%">
+                                    <input type="text" id="no_rekening_edit" name="no_rekening_edit" style="margin-bottom: 5px !important"
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Masukkan nomor rekening" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 23%">
+                                    <label for="pemilik_rekening_edit" class="block text-sm font-medium text-batman-900">Pemilik Rekening</label>
+                                </td>
+                                <td style="width: 77%">
+                                    <input type="text" id="pemilik_rekening_edit" name="pemilik_rekening_edit" style="margin-bottom: 5px !important"
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Masukkan pemilik rekening" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 23%">
+                                    <label for="bank_edit" class="block text-sm font-medium text-batman-900">Bank</label>
+                                </td>
+                                <td style="width: 77%">
+                                    <input type="text" id="bank_edit" name="bank_edit" style="margin-bottom: 5px !important"
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Masukkan bank" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 23%">
+                                    <label for="nama_perusahaan_edit" class="block text-sm font-medium text-batman-900">Nama Perusahaan</label>
+                                </td>
+                                <td style="width: 77%">
+                                    <input type="text" id="nama_perusahaan_edit" name="nama_perusahaan_edit" style="margin-bottom: 5px !important"
+                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="Masukkan nama perusahaan" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 23%">
+                                    <label for="status_edit" class="block text-sm font-medium text-batman-900">Status</label>
+                                </td>
+                                <td style="width: 77%">
+                                    <label class="inline-flex items-center cursor-pointer" style="margin-bottom: 5px !important">
+                                        <input id="status_edit" type="checkbox" value="" class="sr-only peer" checked>
+                                        <div
+                                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                                        </div>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
 
@@ -238,7 +345,7 @@
                 var header_name = $('#tableData thead th').eq($(this).index()).text();
                 var title = header_name.toLowerCase().replace(/\s+/g, "_");
 
-                if (i != 0 && i != 4 && i != 5) {
+                if (i != 0 && i != 8) {
                     $(this).html(
                         `<div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -267,7 +374,7 @@
                 orderCellsTop: true,
                 ajax: {
                     type: 'GET',
-                    url: `{{ route('get-fresh-list-datatable') }}`,
+                    url: `{{ route('get-vendor-list-datatable') }}`,
                     data: {},
                 },
                 columns: [{
@@ -277,12 +384,28 @@
                         searchable: false
                     },
                     {
-                        data: 'kode_fresh',
-                        name: 'kode_fresh',
+                        data: 'nama',
+                        name: 'nama',
                     },
                     {
-                        data: 'deskripsi',
-                        name: 'deskripsi',
+                        data: 'no_telp',
+                        name: 'no_telp',
+                    },
+                    {
+                        data: 'no_rekening',
+                        name: 'no_rekening',
+                    },
+                    {
+                        data: 'pemilik_rekening',
+                        name: 'pemilik_rekening',
+                    },
+                    {
+                        data: 'bank',
+                        name: 'bank',
+                    },
+                    {
+                        data: 'nama_perusahaan',
+                        name: 'nama_perusahaan',
                     },
                     {
                         data: 'status',
@@ -301,7 +424,7 @@
                 ],
                 columnDefs: [{
                     className: "dt-center border border-batman-100",
-                    targets: [0, 1, 2, 3, 4]
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8]
                 }],
                 language: {
                     loadingRecords: '&nbsp;',
@@ -319,16 +442,24 @@
 
         $(document).on('click', '#button_reset_modal', function () {
 
-            $('#kode_fresh').val('');
-            $('#deskripsi').val('');
+            $('#nama_vendor').val('');
+            $('#no_telp').val('');
+            $('#no_rekening').val('');
+            $('#pemilik_rekening').val('');
+            $('#bank').val('');
+            $('#nama_perusahaan').val('');
             $('#status').prop('checked', true);
 
         });
 
         $(document).on('click', '#button_new', function () {
 
-            $('#kode_fresh').val('');
-            $('#deskripsi').val('');
+            $('#nama_vendor').val('');
+            $('#no_telp').val('');
+            $('#no_rekening').val('');
+            $('#pemilik_rekening').val('');
+            $('#bank').val('');
+            $('#nama_perusahaan').val('');
             $('#status').prop('checked', true);
 
         });
@@ -336,8 +467,12 @@
         // ========================= SUBMIT NEW DATA =========================
         $(document).on('click', '#button_submit_modal', function(event) {
 
-            var kode_fresh = $("#kode_fresh").val();
-            var deskripsi = $("#deskripsi").val();
+            var nama_vendor = $("#nama_vendor").val();
+            var no_telp = $("#no_telp").val();
+            var no_rekening = $("#no_rekening").val();
+            var pemilik_rekening = $("#pemilik_rekening").val();
+            var bank = $("#bank").val();
+            var nama_perusahaan = $("#nama_perusahaan").val();
             var status = document.getElementById('status').checked;
 
             if ( status == 1 ) {
@@ -348,11 +483,15 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ url('/post-new-fresh') }}",
+                url: "{{ url('/post-new-vendor') }}",
                 dataType: 'json',
                 data: {
-                    kode_fresh: kode_fresh,
-                    deskripsi: deskripsi,
+                    nama_vendor: nama_vendor,
+                    no_telp: no_telp,
+                    no_rekening: no_rekening,
+                    pemilik_rekening: pemilik_rekening,
+                    bank: bank,
+                    nama_perusahaan: nama_perusahaan,
                     status: flag,
                 },
                 success: function(response) {
@@ -381,7 +520,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed submit fresh request',
+                        text: error.responseJSON.message ?? 'Failed submit vendor request',
                         target: document.getElementById('newCreationModal'),
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
@@ -448,16 +587,20 @@
 
             $.ajax({
                 type: 'GET',
-                url: "{{ url('/get-old-data-of-fresh') }}",
+                url: "{{ url('/get-old-data-of-vendor') }}",
                 dataType: 'json',
                 data: {
-                    fresh_id: data_id,
+                    vendor_id: data_id,
                 },
                 success: function(response) {
 
-                    $("#fresh_id_edit").val(response.id);
-                    $("#kode_fresh_edit").val(response.kode_fresh);
-                    $("#deskripsi_edit").val(response.deskripsi);
+                    $("#vendor_id_edit").val(response.id);
+                    $("#nama_vendor_edit").val(response.nama);
+                    $("#no_telp_edit").val(response.no_telp);
+                    $("#no_rekening_edit").val(response.no_rekening);
+                    $("#pemilik_rekening_edit").val(response.pemilik_rekening);
+                    $("#bank_edit").val(response.bank);
+                    $("#nama_perusahaan_edit").val(response.nama_perusahaan);
 
                     if ( response.flag == 1 ) {
                         $("#status_edit").attr('checked', true);
@@ -471,7 +614,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed get list of fresh',
+                        text: error.responseJSON.message ?? 'Failed get list of vendor',
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
                         customClass: {
@@ -486,9 +629,13 @@
         // ========================= SUBMIT EDIT DATA =========================
         $(document).on('click', '#button_submit_modal_edit', function() {
 
-            var id = $("#fresh_id_edit").val();
-            var kode_fresh = $("#kode_fresh_edit").val();
-            var deskripsi = $("#deskripsi_edit").val();
+            var id = $("#vendor_id_edit").val();
+            var nama_vendor = $("#nama_vendor_edit").val();
+            var no_telp = $("#no_telp_edit").val();
+            var no_rekening = $("#no_rekening_edit").val();
+            var pemilik_rekening = $("#pemilik_rekening_edit").val();
+            var bank = $("#bank_edit").val();
+            var nama_perusahaan = $("#nama_perusahaan_edit").val();
             var status = document.getElementById('status_edit').checked;
 
             if ( status == 1 ) {
@@ -499,12 +646,16 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ url('/post-edit-fresh') }}",
+                url: "{{ url('/post-edit-vendor') }}",
                 dataType: 'json',
                 data: {
-                    id_fresh: id,
-                    kode_fresh: kode_fresh,
-                    deskripsi: deskripsi,
+                    id_vendor: id,
+                    nama_vendor: nama_vendor,
+                    no_telp: no_telp,
+                    no_rekening: no_rekening,
+                    pemilik_rekening: pemilik_rekening,
+                    bank: bank,
+                    nama_perusahaan: nama_perusahaan,
                     status: flag,
                 },
                 success: function(response) {
@@ -533,7 +684,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed submit fresh request',
+                        text: error.responseJSON.message ?? 'Failed submit vendor request',
                         target: document.getElementById('editModal'),
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",

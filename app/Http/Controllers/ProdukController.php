@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\CommonCustomException;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,6 +76,142 @@ class ProdukController extends Controller
             })
             ->rawColumns(['actions'])
             ->make(true);
+    }
+
+    public function postNewProduk(Request $request)
+    {
+
+        $user = Auth::user();
+
+        /** Validate Input */
+        $validate = Validator::make($request->all(), [
+            'kode_produk' => ['required', 'string'],
+            'nama_produk' => ['required', 'string'],
+            'deskripsi' => ['required', 'string'],
+            'status' => ['required'],
+        ]);
+
+
+        if ($validate->fails()) {
+            throw new ValidationException($validate);
+        }
+        (array) $validated = $validate->validated();
+
+        $kode_produk = $validated['kode_produk'];
+        $nama_produk = $validated['nama_produk'];
+        $deskripsi = $validated['deskripsi'];
+
+        $produkCek = Produk::where('kode_produk', $kode_produk)->first();
+        if ( !is_null($produkCek) ) {
+            throw ValidationException::withMessages(['detail' => 'Kode Produk telah digunakan!']);
+        }
+
+        $status = $validated['status'];
+
+        DB::beginTransaction();
+        try {
+
+            $produkData = Produk::create([
+                'kode_produk' => $kode_produk,
+                'nama_produk' => $nama_produk,
+                'deskripsi' => $deskripsi,
+                'flag' => $status,
+                'created_by' => $user?->id,
+                'updated_by' => $user?->id,
+            ]);
+
+            (string) $title = 'Success';
+            (string) $message = 'Data Produk telah berhasil tersimpan dengan kode produk: '.$kode_produk;
+            (array) $data = [
+                'trx_number' => $kode_produk,
+            ];
+            (string) $route = route('/master_data/produk');
+
+            DB::commit();
+            return response()->json([
+                'title' => $title,
+                'message' => $message,
+                'route' => $route,
+                'data' => $data,
+            ]);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            Log::warning('Validation error when submit produk request', ['userId' => $user?->id, 'userName' => $user?->name, 'errors' => $e->getMessage()]);
+            throw $e;
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            throw new CommonCustomException('Failed to submit produk request', 422, $e);
+        }
+
+    }
+
+    public function getOldDataOfProduk(Request $request)
+    {
+        $data = Produk::where('id', $request->produk_id)->first();
+        return response()->json($data);
+    }
+
+    public function postEditProduk(Request $request)
+    {
+
+        $user = Auth::user();
+
+        /** Validate Input */
+        $validate = Validator::make($request->all(), [
+            'id_produk' => ['required'],
+            'kode_produk' => ['required', 'string'],
+            'nama_produk' => ['required', 'string'],
+            'deskripsi' =>  ['required', 'string'],
+            'status' => ['required'],
+        ]);
+
+
+        if ($validate->fails()) {
+            throw new ValidationException($validate);
+        }
+        (array) $validated = $validate->validated();
+
+        $kode_produk = $validated['kode_produk'];
+        $nama_produk = $validated['nama_produk'];
+        $deskripsi = $validated['deskripsi'];
+        $status = $validated['status'];
+
+        DB::beginTransaction();
+        try {
+
+            $produkData = Produk::where('id', $validated['id_produk'])->first();
+
+            $produkData->kode_produk = $kode_produk;
+            $produkData->nama_produk = $nama_produk;
+            $produkData->deskripsi = $deskripsi;
+            $produkData->flag = $status;
+            $produkData->updated_by = $user?->id;
+            $produkData->save();
+
+
+            (string) $title = 'Success';
+            (string) $message = 'Data Produk telah berhasil tersimpan dengan kode: '.$kode_produk;
+            (array) $data = [
+                'trx_number' => $kode_produk,
+            ];
+            (string) $route = route('/master_data/produk');
+
+            DB::commit();
+            return response()->json([
+                'title' => $title,
+                'message' => $message,
+                'route' => $route,
+                'data' => $data,
+            ]);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            Log::warning('Validation error when submit produk request', ['userId' => $user?->id, 'userName' => $user?->name, 'errors' => $e->getMessage()]);
+            throw $e;
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            throw new CommonCustomException('Failed to submit produk request', 422, $e);
+        }
+
     }
 
 }

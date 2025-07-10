@@ -4,7 +4,7 @@
 
         <div class="bg-white border border-batman-50 rounded-lg p-4 shadow-sm flex flex-col">
             <div class="flex items-center">
-                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-batman-900 hover:bg-batman-800 focus:ring-4 focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
+                <button id="button_new" data-modal-target="newCreationModal" data-modal-toggle="newCreationModal" type="button" class="flex items-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none">
                     <img src="{{ asset('svg/plus.svg') }}" class="w-3 h-3 me-2" alt="Plus Icon">
                     Tambah
                 </button>
@@ -20,9 +20,10 @@
                         <tr>
                             <th scope="col" class="top_left_tableData px-6 py-5 !pl-[25px] border-t-0 border-l-0">No.</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Kode Jenis Biaya</th>
+                            <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Jenis Biaya</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Deskripsi</th>
                             <th scope="col" class="px-6 py-5 !pl-[25px] border-t-0">Status</th>
-                            <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 120px !important;">
+                            <th scope="col" class="top_right_tableData border-t-0 border-r-0" style="width: 90px !important;">
                                 <img src="{{ asset('svg/action.svg') }}" class="w-5 h-5 m-auto">
                             </th>
                         </tr>
@@ -33,6 +34,7 @@
                         <tr>
                             <th class="bottom_left_tableData"></th>
                             <th>Kode Jenis Biaya</th>
+                            <th>Jenis Biaya</th>
                             <th>Deskripsi</th>
                             <th>Status</th>
                             <th class="bottom_right_tableData"></th>
@@ -61,7 +63,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Tambah Data Fresh Baru
+                        Tambah Data Jenis Biaya
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -78,46 +80,58 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
                     <div class="flex flex-col">
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="kode_fresh" class="block text-sm font-medium text-batman-900">Kode Fresh</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="text" id="kode_fresh" name="kode_fresh"
+                        <table>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label for="kode_jenis_biaya" class="block text-sm font-medium text-batman-900">Kode Jenis Biaya</label>
+                                </td>
+                                <td style="width: 80%">
+                                    <input type="text" id="kode_jenis_biaya" name="kode_jenis_biaya" style="margin-bottom: 5px !important"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan kode fresh" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="deskripsi" class="block text-sm font-medium text-batman-900">Deskripsi</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="text" id="deskripsi" deskripsi="name"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan deskripsi" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="status" class="block text-sm font-medium text-batman-900">Status</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input id="status" type="checkbox" value="" class="sr-only peer" checked>
-                                    <div
-                                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
+                                    placeholder="Masukkan kode jenis biaya" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label for="jenis_biaya" class="block text-sm font-medium text-batman-900">Jenis Biaya</label>
+                                </td>
+                                <td style="width: 80%">
+                                    <input type="text" id="jenis_biaya" name="jenis_biaya" style="margin-bottom: 5px !important"
+                                        class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Masukkan jenis biaya" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label for="deskripsi" class="block text-sm font-medium text-batman-900">Deskripsi</label>
+                                </td>
+                                <td style="width: 80%">
+                                    <input type="text" id="deskripsi" name="deskripsi" style="margin-bottom: 5px !important"
+                                        class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Masukkan deskripsi" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label for="status" class="block text-sm font-medium text-batman-900">Status</label>
+                                </td>
+                                <td style="width: 80%">
+                                    <label class="inline-flex items-center cursor-pointer" style="margin-bottom: 5px !important">
+                                        <input id="status" type="checkbox" value="" class="sr-only peer" checked>
+                                        <div
+                                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                                        </div>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
                     <button id="button_reset_modal" type="button" class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
-                    <button id="button_submit_modal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal" type="button" class="text-white bg-batman-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -142,7 +156,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Edit Data Fresh
+                        Edit Data Jenis Biaya
                     </h3>
                     <button type="button" id="button_close_modal_edit"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -159,46 +173,58 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5 space-y-4">
                     <div class="flex flex-col">
-                        <input type="hidden" id="fresh_id_edit">
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="kode_fresh_edit" class="block text-sm font-medium text-batman-900">Kode Fresh</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="text" id="kode_fresh_edit" name="kode_fresh_edit"
+                        <input type="hidden" id="jenis_biaya_id_edit">
+                        <table>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label for="kode_jenis_biaya_edit" class="block text-sm font-medium text-batman-900">Kode Jenis Biaya</label>
+                                </td>
+                                <td style="width: 80%">
+                                    <input type="text" id="kode_jenis_biaya_edit" name="kode_jenis_biaya_edit" style="margin-bottom: 5px !important"
                                     class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 disabled:bg-gray-200"
-                                    placeholder="Masukkan kode fresh" disabled>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="deskripsi_edit" class="block text-sm font-medium text-batman-900">Deskripsi</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <input type="text" id="deskripsi_edit" deskripsi="name"
-                                    class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="Masukkan deskripsi" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-6 gap-4 flex flex-col items-center mb-2">
-                            <div class="col-start-1 col-end-1">
-                                <label for="status_edit" class="block text-sm font-medium text-batman-900">Status</label>
-                            </div>
-                            <div class="col-span-5 col-end-7">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input id="status_edit" type="checkbox" value="" class="sr-only peer" checked>
-                                    <div
-                                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
+                                    placeholder="Masukkan kode jenis biaya" disabled>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label for="jenis_biaya_edit" class="block text-sm font-medium text-batman-900">Jenis Biaya</label>
+                                </td>
+                                <td style="width: 80%">
+                                    <input type="text" id="jenis_biaya_edit" name="jenis_biaya_edit" style="margin-bottom: 5px !important"
+                                        class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Masukkan jenis biaya" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label for="deskripsi_edit" class="block text-sm font-medium text-batman-900">Deskripsi</label>
+                                </td>
+                                <td style="width: 80%">
+                                    <input type="text" id="deskripsi_edit" name="deskripsi_edit" style="margin-bottom: 5px !important"
+                                        class="bg-gray-50 border border-batman-200 text-batman-900 placeholder-batman-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Masukkan deskripsi" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label for="status_edit" class="block text-sm font-medium text-batman-900">Status</label>
+                                </td>
+                                <td style="width: 80%">
+                                    <label class="inline-flex items-center cursor-pointer" style="margin-bottom: 5px !important">
+                                        <input id="status_edit" type="checkbox" value="" class="sr-only peer" checked>
+                                        <div
+                                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                                        </div>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-batman-700 hover:bg-batman-800 focus:ring-4 focus:outline-none focus:ring-batman-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button" class="text-white bg-batman-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
                 </div>
@@ -238,7 +264,7 @@
                 var header_name = $('#tableData thead th').eq($(this).index()).text();
                 var title = header_name.toLowerCase().replace(/\s+/g, "_");
 
-                if (i != 0 && i != 4 && i != 5) {
+                if (i != 0 && i != 5) {
                     $(this).html(
                         `<div class="relative">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -267,7 +293,7 @@
                 orderCellsTop: true,
                 ajax: {
                     type: 'GET',
-                    url: `{{ route('get-fresh-list-datatable') }}`,
+                    url: `{{ route('get-jenis-biaya-list-datatable') }}`,
                     data: {},
                 },
                 columns: [{
@@ -277,8 +303,12 @@
                         searchable: false
                     },
                     {
-                        data: 'kode_fresh',
-                        name: 'kode_fresh',
+                        data: 'kode_jenis_biaya',
+                        name: 'kode_jenis_biaya',
+                    },
+                    {
+                        data: 'jenis_biaya',
+                        name: 'jenis_biaya',
                     },
                     {
                         data: 'deskripsi',
@@ -319,7 +349,8 @@
 
         $(document).on('click', '#button_reset_modal', function () {
 
-            $('#kode_fresh').val('');
+            $('#kode_jenis_biaya').val('');
+            $('#jenis_biaya').val('');
             $('#deskripsi').val('');
             $('#status').prop('checked', true);
 
@@ -327,7 +358,8 @@
 
         $(document).on('click', '#button_new', function () {
 
-            $('#kode_fresh').val('');
+            $('#kode_jenis_biaya').val('');
+            $('#jenis_biaya').val('');
             $('#deskripsi').val('');
             $('#status').prop('checked', true);
 
@@ -336,7 +368,8 @@
         // ========================= SUBMIT NEW DATA =========================
         $(document).on('click', '#button_submit_modal', function(event) {
 
-            var kode_fresh = $("#kode_fresh").val();
+            var kode_jenis_biaya = $("#kode_jenis_biaya").val();
+            var jenis_biaya = $("#jenis_biaya").val();
             var deskripsi = $("#deskripsi").val();
             var status = document.getElementById('status').checked;
 
@@ -348,10 +381,11 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ url('/post-new-fresh') }}",
+                url: "{{ url('/post-new-jenis-biaya') }}",
                 dataType: 'json',
                 data: {
-                    kode_fresh: kode_fresh,
+                    kode_jenis_biaya: kode_jenis_biaya,
+                    jenis_biaya: jenis_biaya,
                     deskripsi: deskripsi,
                     status: flag,
                 },
@@ -381,7 +415,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed submit cook food request',
+                        text: error.responseJSON.message ?? 'Failed submit jenis biaya request',
                         target: document.getElementById('newCreationModal'),
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
@@ -448,15 +482,16 @@
 
             $.ajax({
                 type: 'GET',
-                url: "{{ url('/get-old-data-of-fresh') }}",
+                url: "{{ url('/get-old-data-of-jenis-biaya') }}",
                 dataType: 'json',
                 data: {
-                    fresh_id: data_id,
+                    jenis_biaya_id: data_id,
                 },
                 success: function(response) {
 
-                    $("#fresh_id_edit").val(response.id);
-                    $("#kode_fresh_edit").val(response.kode_fresh);
+                    $("#jenis_biaya_id_edit").val(response.id);
+                    $("#kode_jenis_biaya_edit").val(response.kode_jenis_biaya);
+                    $("#jenis_biaya_edit").val(response.jenis_biaya);
                     $("#deskripsi_edit").val(response.deskripsi);
 
                     if ( response.flag == 1 ) {
@@ -471,7 +506,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed get list of fresh',
+                        text: error.responseJSON.message ?? 'Failed get list of jenis biaya',
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
                         customClass: {
@@ -486,8 +521,9 @@
         // ========================= SUBMIT EDIT DATA =========================
         $(document).on('click', '#button_submit_modal_edit', function() {
 
-            var id = $("#fresh_id_edit").val();
-            var kode_fresh = $("#kode_fresh_edit").val();
+            var id = $("#jenis_biaya_id_edit").val();
+            var kode_jenis_biaya = $("#kode_jenis_biaya_edit").val();
+            var jenis_biaya = $("#jenis_biaya_edit").val();
             var deskripsi = $("#deskripsi_edit").val();
             var status = document.getElementById('status_edit').checked;
 
@@ -499,11 +535,12 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ url('/post-edit-fresh') }}",
+                url: "{{ url('/post-edit-jenis-biaya') }}",
                 dataType: 'json',
                 data: {
-                    id_fresh: id,
-                    kode_fresh: kode_fresh,
+                    id_jenis_biaya: id,
+                    kode_jenis_biaya: kode_jenis_biaya,
+                    jenis_biaya: jenis_biaya,
                     deskripsi: deskripsi,
                     status: flag,
                 },
@@ -533,7 +570,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: "Error",
-                        text: error.responseJSON.message ?? 'Failed submit fresh request',
+                        text: error.responseJSON.message ?? 'Failed submit jenis biaya request',
                         target: document.getElementById('editModal'),
                         showConfirmButton: true,
                         confirmButtonColor: "#c1141b",
