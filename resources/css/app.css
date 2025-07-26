@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.select2-container .select2-selection {
+    background-color: #f9fafb !important;
+    border: 1px solid #d1d1d1 !important;
+    color: #3d3d3d !important;
+    font-size: 0.875rem !important;
+    border-radius: 0.5rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0.5rem !important;
+    box-sizing: border-box !important;
+}
+
+.select2-container .select2-selection::placeholder {
+    color: #888888 !important;
+}
+
+/* Optional: focus styles (no direct equivalent in plain CSS without JS or pseudo-class) */
+.select2-container .select2-selection:focus {
+    outline: none !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 1px #3b82f6 !important;
+}
