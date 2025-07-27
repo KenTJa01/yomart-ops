@@ -220,6 +220,32 @@ class PengajuanObjekController extends Controller
         }
     }
 
+    public function getOldDataOfPengajuanObjek(Request $request)
+    {
+        $user = Auth::user();
+        $objek_id = $request->input('objek_id');
+
+        if (!$objek_id) {
+            return response()->json(['error' => 'Data ID is required'], 400);
+        }
+
+        try {
+            $pengajuanObjek = Pengajuan_lokasi::findOrFail($objek_id);
+
+            return response()->json([
+                'success' => true,
+                'data' => $pengajuanObjek
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error fetching old data of pengajuan objek', [
+                'userId' => $user?->id,
+                'userName' => $user?->name,
+                'error' => $e->getMessage()
+            ]);
+            return response()->json(['error' => 'Data not found'], 404);
+        }
+    }
+
     public function store(Request $request)
     {
         //Validate form data

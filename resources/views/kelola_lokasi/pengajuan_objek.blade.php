@@ -1236,6 +1236,9 @@
                         dropdown.style.top = `${rect.bottom + window.scrollY}px`;
                         dropdown.style.left = `${rect.right - dropdownWidth + window.scrollX}px`;
 
+                        idEdit = trigger.getAttribute("data-id");
+                        console.log(idEdit);
+
                         dropdown.classList.remove("hidden");
                         currentTrigger = trigger;
                         isDropdownOpen = true;
@@ -1870,8 +1873,46 @@
                     multiple: false
                 });
 
-                const userId = $(this).data('id');
-                console.log('Edit user ID:', userId);
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ url('/get-old-data-of-pengajuan-objek') }}",
+                    dataType: 'json',
+                    data: {
+                        objek_id: idEdit,
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        return;
+
+                        // $("#user_id_edit").val(response.id);
+                        // $("#username_edit").val(response.username);
+                        // $("#name_edit").val(response.name);
+
+                        // if ( response.is_active == 1 ) {
+                        //     $("#status_edit").attr('checked', true);
+                        // } else if ( response.is_active == 0 ) {
+                        //     $("#status_edit").attr('checked', false);
+                        // }
+
+                        // $("#select_profile_edit").html('');
+                        // getProfileById(response.profile_id);
+
+                    },
+                    error: function(error) {
+                        console.log(error.responseJSON);
+                        Swal.fire({
+                            icon: 'error',
+                            title: "Error",
+                            text: error.responseJSON.message ?? 'Failed get list of user',
+                            showConfirmButton: true,
+                            confirmButtonColor: "#c1141b",
+                            customClass: {
+                                confirmButton: 'custom-confirm-button-swal'
+                            },
+                        });
+                    },
+                });
+
 
             } else {
 

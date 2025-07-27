@@ -111,6 +111,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/kelola_lokasi/pengajuan_objek', [PengajuanObjekController::class, 'PengajuanObjekPage'])->name('/kelola_lokasi/pengajuan_objek');
     Route::get('/get-pengajuan-objek-list-datatable', [PengajuanObjekController::class, 'getPengajuanObjekListDatatable'])->name('get-pengajuan-objek-list-datatable');
     Route::post('/post-new-pengajuan-objek', [PengajuanObjekController::class, 'postNewPengajuanObjek'])->name('post-new-pengajuan-objek');
+    Route::get('/get-old-data-of-pengajuan-objek', [PengajuanObjekController::class, 'getOldDataOfPengajuanObjek'])->name('get-old-data-of-pengajuan-objek');
 
     Route::get('provinces', [DependentDropdownController::class,'provinces'])->name('provinces');
     Route::get('cities', [DependentDropdownController::class,'cities'])->name('cities');

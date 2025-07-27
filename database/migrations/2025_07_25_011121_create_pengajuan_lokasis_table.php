@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('kode_kelurahan');
             $table->string('kelurahan');
             $table->string('wilayah');
-            $table->integer('perkiraan_biaya_sewa');
+            $table->bigInteger('perkiraan_biaya_sewa');
             $table->string('periode_sewa');
             $table->string('lokasi');
             $table->float('panjang_bangunan');
