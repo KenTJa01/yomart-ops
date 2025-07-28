@@ -547,10 +547,10 @@
 
     <!-- EDIT MODAL -->
     <div id="editModal" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-hidden overflow-x-hidden fixed inset-0 z-50 flex justify-start items-start w-full h-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        class="hidden overflow-y-hidden overflow-x-hidden fixed inset-0 z-2 flex justify-start items-start w-full h-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
 
         <!-- ✅ BACKDROP BLUR -->
-        <div class="absolute inset-0 bg-dark/5 backdrop-blur-xs w-full" data-modal-hide="editModal"></div>
+        <div class="absolute inset-0 bg-dark/5 backdrop-blur-xs w-full"></div>
 
 
         <div class="relative p-4 w-full !max-w-[1200px] max-h-full">
@@ -561,15 +561,15 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900">
-                        Edit Pengajuan Objek
+                        Tambah Data Objek
                     </h3>
                     <button type="button" id="button_close_modal_edit"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
                         data-modal-hide="editModal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                         <span class="sr-only">Close modal</span>
                     </button>
@@ -582,9 +582,11 @@
                         <table style="width: 100%;">
                             <tr>
                                 {{-- TANGGAL WAKTU --}}
-                                <td class="label_form" style="width: 16%">Tanggal Waktu</td>
-                                <td class="" style="margin: 0; padding: 0; width: 32%">
-                                    <input type="date" id="tanggal_waktu_approve" class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                                <td class="label_form" style="width: 15%">Tanggal Waktu</td>
+                                <td class="" style="margin: 0; padding: 0; width: 33%">
+                                    <input type="date" id="tanggal_waktu_edit" name="tanggal_waktu_edit"
+                                        class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                        required>
                                 </td>
 
                                 {{-- VERTICAL LINE --}}
@@ -592,10 +594,15 @@
                                     <hr class="vertical_line_two_row">
                                 </td>
 
+                                {{-- BENTUK OBJEK --}}
                                 <td class="label_form" style="width: 15%">Bentuk Objek</td>
                                 <td class="" style="margin: 0; padding: 0; width: 33%">
-                                    <select class="" name="select_bentuk_objek_approve" id="select_bentuk_objek_approve" name="select_bentuk_objek_approve" style="width: 100%; height: 46px !important;" required>
+                                    <select class="" name="select_bentuk_objek_edit" id="select_bentuk_objek_edit" name="select_bentuk_objek_edit" style="width: 100%; height: 46px !important;" required>
                                         <option value="">Pilih bentuk objek</option>
+                                        <option value="rumah_tinggal">Rumah Tinggal</option>
+                                        <option value="tanah_kosong">Tanah Kosong</option>
+                                        <option value="ruko">Ruko</option>
+                                        <option value="toko_kios">Toko / Kios</option>
                                     </select>
                                 </td>
                             </tr>
@@ -603,7 +610,7 @@
                                 {{-- JENIS OBJEK --}}
                                 <td class="label_form" for="status">Jenis Objek</td>
                                 <td class="container_input_form" style="margin: 0; padding: 0;">
-                                    <select class="select-alamat-spesifikasi" name="select_jenis_objek_approve" id="select_jenis_objek_approve" style="width: 100%; height: 46px !important;">
+                                    <select class="" name="select_jenis_objek_edit" id="select_jenis_objek_edit" name="select_jenis_objek_edit" style="width: 100%; height: 46px !important;" required>
                                         <option value="">Pilih jenis objek</option>
                                         <option value="sewa_baru">Sewa Baru</option>
                                         <option value="beli_baru">Beli Baru</option>
@@ -613,143 +620,56 @@
                                 {{-- OBJEK SEWA/BELI --}}
                                 <td class="label_form" style="width: 15%">Objek Sewa/Beli</td>
                                 <td class="" style="margin: 0; padding: 0; width: 33%">
-                                    <select class="select-alamat-spesifikasi" name="select_objek_sewa_beli_approve" id="select_objek_sewa_beli_approve" style="width: 100%; height: 46px !important;">
+                                    <select class="" name="select_objek_sewa_beli_edit" id="select_objek_sewa_beli_edit" name="select_objek_sewa_beli_edit" style="width: 100%; height: 46px !important;" required>
                                         <option value="">Pilih objek sewa/beli</option>
+                                        <option value="keseluruhan">Keseluruhan</option>
+                                        <option value="sebagian">Sebagian</option>
                                     </select>
                                 </td>
                             </tr>
                         </table>
 
+                        {{-- GROUP OF TAB --}}
                         <div class="mb-4 border-b border-gray-200">
-
                             <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
                                 data-tabs-toggle="#default-tab-content" role="tablist">
 
-                                {{-- GENERAL --}}
+                                {{-- TAB ALAMAT & SPESIFIKASI --}}
                                 <li class="me-2" role="presentation">
-                                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="general-approve-tab"
-                                        data-tabs-target="#general-approve" type="button" role="tab"
-                                        aria-controls="general-approve" aria-selected="false">General</button>
+                                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab-edit"
+                                        data-tabs-target="#profile-edit" type="button" role="tab"
+                                        aria-controls="profile-edit" aria-selected="false">Alamat & Spesifikasi</button>
                                 </li>
 
-                                {{-- ALAMAT & SPESIFIKASI --}}
-                                <li class="me-2" role="presentation">
-                                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="alamat-approve-tab"
-                                        data-tabs-target="#alamat-approve" type="button" role="tab"
-                                        aria-controls="alamat-approve" aria-selected="false">Alamat & Spesifikasi</button>
-                                </li>
+                                {{-- <li class="me-2" role="presentation">
+                                    <button
+                                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300"
+                                        id="upload-tab" data-tabs-target="#upload" type="button"
+                                        role="tab" aria-controls="upload" aria-selected="false">
+                                        Upload
+                                    </button>
+                                </li> --}}
 
-                                {{-- DATA PEMILIK --}}
+                                {{-- TAB DATA PEMILIK --}}
                                 <li class="me-2" role="presentation">
-                                    <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="data-pemilik-approve-tab" data-tabs-target="#data-pemilik-approve" type="button" role="tab" aria-controls="data-pemilik-approve" aria-selected="false">
+                                    <button
+                                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300"
+                                        id="dashboard-tab-edit" data-tabs-target="#dashboard-edit" type="button"
+                                        role="tab" aria-controls="dashboard-edit" aria-selected="false">
                                         Data Pemilik
                                     </button>
                                 </li>
 
-                                {{-- PERJANJIAN SEWA/SHBG/AJB --}}
-                                <li class="me-2" role="presentation">
-                                    <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="perjanjian-sewa-approve-tab" data-tabs-target="#perjanjian-sewa-approve" type="button" role="tab" aria-controls="perjanjian-sewa-approve" aria-selected="false">
-                                        Perjanjian Sewa/SHBG/AJB
-                                    </button>
-                                </li>
-
-                                {{-- INFORMASI PBB --}}
-                                <li class="me-2" role="presentation">
-                                    <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="informasi-pbb-approve-tab" data-tabs-target="#informasi-pbb-approve" type="button" role="tab" aria-controls="informasi-pbb-approve" aria-selected="false">
-                                        Informasi PBB
-                                    </button>
-                                </li>
-
-                                {{-- MASA BERLAKU SEWA --}}
-                                {{-- <li class="me-2" role="presentation">
-                                    <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="masa-berlaku-approve-tab" data-tabs-target="#masa-berlaku-approve" type="button" role="tab" aria-controls="masa-berlaku-approve" aria-selected="false">
-                                        Masa Berlaku Sewa
-                                    </button>
-                                </li> --}}
                             </ul>
-
                         </div>
 
-
+                        {{-- CONTENT OF TAB --}}
                         <div id="default-tab-content">
 
-                            {{-- TAB GENERAL --}}
-                            <div class="hidden p-4 rounded-lg bg-gray-50" id="general-approve" role="tabpanel" aria-labelledby="general-approve-tab">
-                                <table style="width: 100%;">
-                                    <tr>
-                                        {{-- NAMA STORE --}}
-                                        <td class="label_form" style="width: 15%">Nama Store</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="nama_store_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan nama store">
-                                        </td>
-
-                                        {{-- VERTICAL LINE --}}
-                                        <td style="width: 4%" rowspan="4">
-                                            <hr style="border: none; border-left: 1px solid rgb(206, 206, 206); height: 205px; margin: 0 30px;">
-                                        </td>
-
-                                        {{-- NAMA DI SERTIFIKAT --}}
-                                        <td class="label_form" style="width: 15%">Nama di Sertifikat</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="nama_di_sertifikat_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan nama di sertifikat">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        {{-- KODE STORE --}}
-                                        <td class="label_form" style="width: 15%">Kode Store</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="kode_store_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan kode store">
-                                        </td>
-
-                                        {{-- FOTO OBJEK --}}
-                                        <td class="label_form" style="width: 15%">Foto Objek Sewa</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-
-                                            <label for="upload-approve" class="inline-block cursor-pointer px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                                                Pilih Foto
-                                            </label>
-                                            <input id="upload-approve" type="file" accept="image/*" multiple class="hidden">
-
-                                            <!-- Keterangan jumlah / nama file -->
-                                            <div id="file-info-approve" class="mt-2 text-sm text-gray-700 bg-white !border-batman-400"></div>
-                                            <input id="upload-approve" name="attachments-approve[]" type="file" accept="image/*" multiple class="hidden">
-                                            <div id="file-info-approve" class="mt-2 text-sm text-gray-700 bg-white !border-batman-400"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        {{-- INISIAL STORE --}}
-                                        <td class="label_form" style="width: 15%">Inisial Store</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="inisial_store_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan inisial store">
-                                        </td>
-                                        {{-- KETERANGAN --}}
-                                        <td class="label_form" style="width: 15%">Keterangan</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" rowspan="2">
-                                            <textarea
-                                                class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full h-[100px] border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                id="keterangan_general_approve" style="resize: none;"></textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        {{-- TANGGAL OPENING --}}
-                                        <td class="label_form" style="width: 15%">Tanggal Opening</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%">
-                                            <input type="date" id="tanggal_opening_approve" class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
                             {{-- TAB ALAMAT & SPESIFIKASI --}}
-                            <div class="hidden p-4 rounded-lg bg-gray-50" id="alamat-approve" role="tabpanel" aria-labelledby="alamat-approve-tab">
+                            <div class="hidden p-4 rounded-lg bg-gray-50" id="profile-edit" role="tabpanel"
+                                aria-labelledby="profile-tab-edit">
+
                                 <table style="width: 100%;">
                                     <tr>
                                         {{-- ALAMAT LENGKAP --}}
@@ -757,26 +677,37 @@
                                         <td class="" style="margin: 0; padding: 0; width: 33%" rowspan="2">
                                             <textarea
                                                 class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full h-[100px] border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                id="alamat_lengkap_approve" style="resize: none;"></textarea>
+                                                id="txt_alamat_edit" name="txt_alamat_edit" style="resize: none;" required></textarea>
                                         </td>
 
                                         {{-- VERTICAL LINE --}}
-                                        <td style="width: 4%" rowspan="10">
-                                            <hr style="border: none; border-left: 1px solid rgb(206, 206, 206); height: 520px; margin: 0 30px; margin-top: -10px">
+                                        <td style="width: 4%" rowspan="9">
+                                            <hr style="border: none; border-left: 1px solid rgb(206, 206, 206); height: 470px; margin: 0 30px;">
                                         </td>
+
+                                        {{-- LOKASI --}}
+                                        <td class="label_form" style="width: 15%">Lokasi</td>
+                                        <td class="" style="margin: 0; padding: 0; width: 33%">
+                                            <input type="text" id="lokasi_edit" name="lokasi_edit"
+                                                class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                                placeholder="Masukkan lokasi" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
 
                                         {{-- LUAS BANGUNAN --}}
                                         <td class="label_form" style="width: 15%">Luas Bangunan</td>
                                         <td class="" style="margin: 0 !important; padding: 0; width: 33%">
                                             <div class="mb-[7px] flex items-center" style="margin: 0; padding: 0;">
 
-                                                <input type="number" id="panjang_luas_bangunan_approve"
+                                                <input type="number" id="panjang_lb_edit" name="panjang_lb_edit"
                                                 class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Panjang">
+                                                placeholder="Panjang" required>
 
-                                                <input type="number" id="lebar_luas_bangunan_approve"
+                                                <input type="number" id="lebar_lb_edit" name="lebar_lb_edit"
                                                 class="ml-2 py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Lebar">
+                                                placeholder="Lebar" required>
 
                                                 <span class="ml-2 mr-2">m<sup>2</sup></span>
                                             </div>
@@ -784,19 +715,31 @@
                                     </tr>
                                     <tr>
                                         <td></td>
+
+                                        {{-- RT/RW --}}
+                                        <td>
+                                            <div class="mb-[7px] flex">
+                                                <input type="number" id="rt_edit" name="rt_edit"
+                                                class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                                placeholder="RT" required>
+                                                <input type="number" id="rw_edit" name="rw_edit"
+                                                class="ml-2 py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                                placeholder="RW" required>
+                                            </div>
+                                        </td>
 
                                         {{-- LUAS TANAH --}}
                                         <td class="label_form" style="width: 15%">Luas Tanah</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%">
                                             <div class="mb-[7px] flex items-center">
 
-                                                <input type="number" id="panjang_luas_tanah_approve"
+                                                <input type="number" id="panjang_lt_edit" name="panjang_lt_edit"
                                                 class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Panjang">
+                                                placeholder="Panjang" required>
 
-                                                <input type="number" id="lebar_luas_tanah_approve"
+                                                <input type="number" id="lebar_lt_edit" name="lebar_lt_edit"
                                                 class="ml-2 py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Lebar">
+                                                placeholder="Lebar" required>
 
                                                 <span class="ml-2 mr-2">m<sup>2</sup></span>
 
@@ -804,42 +747,27 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-
-                                        {{-- RT & RW --}}
-                                        <td>
-                                            <div class="mb-[7px] flex">
-                                                <input type="number" id="rt_approve"
-                                                class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="RT">
-                                                <input type="number" id="rw_approve"
-                                                class="ml-2 py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="RW">
-                                            </div>
+                                        {{-- KOTA --}}
+                                        <td class="label_form" style="width: 15%">Kota</td>
+                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
+                                            <select class="" name="select_kota_edit" id="select_kota_edit" style="width: 100%; height: 46px !important;" required>
+                                                <option value="">Pilih kota</option>
+                                                @foreach ($kota as $item)
+                                                    <option value="{{ $item->id ?? '' }}" name="{{ $item->name ?? '' }}">{{ $item->name ?? '' }}</option>
+                                                @endforeach
+                                            </select>
                                         </td>
 
                                         {{-- HAK TANAH --}}
                                         <td class="label_form" style="width: 15%">Hak Tanah</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <select class="select-alamat-spesifikasi" name="select_hak_tanah_approve" id="select_hak_tanah_approve" style="width: 100%; height: 46px !important;">
+                                            <select class="" name="select_hak_tanah_edit" id="select_hak_tanah_edit" style="width: 100%; height: 46px !important;" required>
                                                 <option value="">Pilih hak tanah</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        {{-- KOTA --}}
-                                        <td class="label_form" style="width: 15%">Kota</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <select class="select-alamat-spesifikasi" name="select_kota_approve" id="select_kota_approve" style="width: 100%; height: 46px !important;">
-                                                <option value="">Pilih kota</option>
-                                            </select>
-                                        </td>
-
-                                        {{-- PBG --}}
-                                        <td class="label_form" style="width: 15%">PBG</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <select class="select-alamat-spesifikasi" name="select_pbg_approve" id="select_pbg_approve" style="width: 100%; height: 46px !important;">
-                                                <option value="">Pilih pbg</option>
+                                                <option value="hak_milik">Hak Milik</option>
+                                                <option value="hak_guna_bangunan">Hak Guna Bangunan</option>
+                                                <option value="hak_guna_usaha">Hak Guna Usaha</option>
+                                                <option value="hak_pakai">Hak Pakai</option>
+                                                <option value="hak_pengelolaan">Hak Pengelolaan</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -847,303 +775,130 @@
                                         {{-- KECAMATAN --}}
                                         <td class="label_form" style="width: 15%">Kecamatan</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <select class="select-alamat-spesifikasi" name="select_kecamatan_approve" id="select_kecamatan_approve" style="width: 100%; height: 46px !important;">
+                                            <select class="" name="select_kecamatan_edit" id="select_kecamatan_edit" style="width: 100%; height: 46px !important;" required>
                                                 <option value="">Pilih kecamatan</option>
                                             </select>
                                         </td>
 
-                                        {{-- KETERANGAN PBG --}}
-                                        <td class="label_form" style="width: 15%">Keterangan PBG</td>
+                                        {{-- PBG --}}
+                                        <td class="label_form" style="width: 15%">PBG</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="keterangan_pbg_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan keterangan pbg">
+                                            <select class="" name="select_pbg_edit" id="select_pbg_edit" style="width: 100%; height: 46px !important;" required>
+                                                <option value="">Pilih pbg</option>
+                                                <option value="1">Ada</option>
+                                                <option value="2">Tidak Ada</option>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         {{-- KELURAHAN --}}
                                         <td class="label_form" style="width: 15%">Kelurahan</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <select class="select-alamat-spesifikasi" name="select_kelurahan_approve" id="select_kelurahan_approve" style="width: 100%; height: 46px !important;">
+                                            <select class="" name="select_kelurahan_edit" id="select_kelurahan_edit" style="width: 100%; height: 46px !important;" required>
                                                 <option value="">Pilih kelurahan</option>
                                             </select>
                                         </td>
 
-                                        {{-- FOTO OBJEK --}}
-                                        <td class="label_form" style="width: 15%">Foto Objek Sewa</td>
+                                        {{-- KETERANGAN PBG --}}
+                                        <td class="label_form" style="width: 15%">Keterangan PBG</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" >
-
-                                            <label for="upload_approve" class="inline-block cursor-pointer px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                                                Pilih Foto
-                                            </label>
-                                            <input id="upload_approve" type="file" accept="image/*" multiple class="hidden">
-
-                                            <!-- Keterangan jumlah / nama file -->
-                                            <div id="file-info-upload" class="mt-2 text-sm text-gray-700 bg-white !border-batman-400"></div>
-
-                                            <script>
-                                            const input = document.getElementById('upload_approve');
-                                            const fileInfo = document.getElementById('file-info-upload');
-
-                                            input.addEventListener('change', function () {
-                                                const total = this.files.length;
-
-                                                if (total === 1) {
-                                                fileInfo.textContent = this.files[0].name;
-                                                } else if (total > 1) {
-                                                fileInfo.textContent = `${total} foto telah dipilih`;
-                                                } else {
-                                                fileInfo.textContent = '';
-                                                }
-                                            });
-                                            </script>
-
+                                            <input type="text" id="keterangan_pbg_edit" name="keterangan_pbg_edit"
+                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                                placeholder="Masukkan keterangan pbg" required>
                                         </td>
                                     </tr>
                                     <tr>
                                         {{-- WILAYAH --}}
                                         <td class="label_form" style="width: 15%">Wilayah</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <select class="select-alamat-spesifikasi" name="select_wilayah_approve" id="select_wilayah_approve" style="width: 100%; height: 46px !important;">
+                                            <select class="" name="select_wilayah_edit" id="select_wilayah_edit" style="width: 100%; height: 46px !important;">
                                                 <option value="">Pilih wilayah</option>
+                                                <option value="kota">Kota</option>
+                                                <option value="kabupaten">Kabupaten</option>
                                             </select>
                                         </td>
 
-                                        {{-- SLF --}}
-                                        <td class="label_form" style="width: 15%">SLF</td>
+                                        {{-- FOTO OBJEK SEWA --}}
+                                        <td class="label_form" style="width: 15%">Foto Objek Sewa</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="slf_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan slf">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        {{-- REGIONAL --}}
-                                        <td class="label_form" style="width: 15%">Regional</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <select class="select-alamat-spesifikasi" name="select_regional_approve" id="select_regional_approve" style="width: 100%; height: 46px !important;">
-                                                <option value="">Pilih regional</option>
-                                            </select>
-                                        </td>
 
-                                        {{-- NIB --}}
-                                        <td class="label_form" style="width: 15%">NIB</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="nib_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan nib">
+                                            <label for="upload_edit" class="inline-block cursor-pointer px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                                                Pilih Foto
+                                            </label>
+
+                                            <input id="upload_edit" name="attachments[]" type="file" accept="image/*" multiple class="hidden">
+                                            <div id="file-info-edit" class="mt-2 text-sm text-gray-700 bg-white !border-batman-400"></div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        {{-- CLUSTER --}}
-                                        <td class="label_form" style="width: 15%">Cluster</td>
+                                        {{-- PERKIRAAN BIAYA --}}
+                                        <td class="label_form" style="width: 15%">Perkiraan Biaya</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <select class="select-alamat-spesifikasi" name="select_cluster_approve" id="select_cluster_approve" style="width: 100%; height: 46px !important;">
-                                                <option value="">Pilih cluster</option>
-                                            </select>
+                                            <input type="number" id="perkiraan_biaya_edit" name="perkiraan_biaya_edit"
+                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                                placeholder="Masukkan perkiraan biaya sewa" required>
                                         </td>
 
                                         {{-- KETERANGAN --}}
                                         <td class="label_form" style="width: 15%">Keterangan</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%" rowspan="2">
                                             <textarea
+                                                id="keterangan_edit" name="keterangan_edit"
                                                 class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full h-[100px] border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                id="keterangan_alamat_approve" style="resize: none;"></textarea>
+                                                id="" style="resize: none;"></textarea required>
                                         </td>
                                     </tr>
                                     <tr>
-                                        {{-- LOKASI --}}
-                                        <td class="label_form" style="width: 15%">Lokasi</td>
+                                        {{-- PERIODE SEWA --}}
+                                        <td class="label_form" style="width: 15%">Periode Sewa</td>
                                         <td class="" style="margin: 0; padding: 0; width: 33%">
-                                            <select class="select-alamat-spesifikasi" name="select_lokasi_approve" id="select_lokasi_approve" style="width: 100%; height: 46px !important;">
-                                                <option value="">Pilih lokasi</option>
-                                            </select>
+                                            <input type="text" id="periode_sewa_edit" name="periode_sewa_edit"
+                                                class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                                placeholder="Masukkan periode sewa" required>
                                         </td>
                                     </tr>
                                 </table>
+
                             </div>
-
-                            {{-- <div class="p-4 rounded-lg bg-gray-50" id="upload" role="tabpanel" aria-labelledby="upload-tab">
-                                <div class="max-w-xl mx-auto">
-                                    <label class="block mb-2 text-sm font-medium text-gray-700" for="image_input">Upload Gambar</label>
-
-                                    <!-- Dropzone Upload Box -->
-                                    <div class="flex justify-center rounded-lg border border-dashed border-gray-300 bg-white px-6 py-10">
-                                    <div class="text-center">
-                                        <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z" clip-rule="evenodd" />
-                                        </svg>
-                                        <div class="mt-4 flex text-sm text-gray-600">
-                                        <label for="image_input" class="relative cursor-pointer rounded-md bg-white font-semibold text-blue-600 hover:text-blue-500">
-                                            <span>Pilih foto</span>
-                                            <input id="image_input" type="file" accept="image/*" multiple class="sr-only">
-                                        </label>
-                                        </div>
-                                        <p class="text-xs text-gray-500 mt-1">Bisa upload banyak gambar, max 5MB tiap file</p>
-                                    </div>
-                                    </div>
-
-                                    <!-- Preview Container -->
-                                    <div id="preview_container" class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
-                                </div>
-
-                                <script>
-                                    const imageInput = document.getElementById('image_input');
-                                    const previewContainer = document.getElementById('preview_container');
-
-                                    imageInput.addEventListener('change', function () {
-                                    previewContainer.innerHTML = ''; // Clear preview
-
-                                    Array.from(this.files).forEach((file, index) => {
-                                        const reader = new FileReader();
-
-                                        reader.onload = function (e) {
-                                        const previewBox = document.createElement('div');
-                                        previewBox.className = 'relative border rounded-lg shadow p-2';
-
-                                        previewBox.innerHTML = `
-                                            <img src="${e.target.result}" class="w-full h-32 object-cover rounded" alt="Preview Gambar ${index + 1}" />
-                                            <button type="button" class="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded hover:bg-red-600" onclick="this.parentElement.remove()">Hapus</button>
-                                        `;
-
-                                        previewContainer.appendChild(previewBox);
-                                        };
-
-                                        reader.readAsDataURL(file);
-                                    });
-                                    });
-                                </script>
-                            </div> --}}
 
                             {{-- TAB DATA PEMILIK --}}
-                            <div class="hidden p-4 rounded-lg bg-gray-50" id="data-pemilik-approve" role="tabpanel" aria-labelledby="data-pemilik-approve-tab">
-                                <table style="width: 100%;">
+                            <div class="hidden p-4 rounded-lg bg-gray-50" id="dashboard-edit"
+                                role="tabpanel" aria-labelledby="dashboard-tab-edit">
+
+                                <table style="width: 47%;">
                                     <tr>
-                                        {{-- NIK PEMILIK --}}
-                                        <td class="label_form" style="width: 15%">NIK Pemilik</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="nik_pemilik_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan nik pemilik">
-                                        </td>
-
-                                        {{-- VERTICAL LINE --}}
-                                        <td style="width: 4%" rowspan="2">
-                                            <hr style="border: none; border-left: 1px solid rgb(206, 206, 206); height: 94px; margin: 0 30px; margin-top: -10px">
-                                        </td>
-
-                                        {{-- KONTAK PEMILIK --}}
-                                        <td class="label_form" style="width: 15%">Kontak Pemilik</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="kontak_pemilik_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan kontak pemilik">
+                                        {{-- PIC --}}
+                                        <td class="label_form" style="width: 14%">PIC</td>
+                                        <td class="" style="margin: 0; padding: 0; width: 34%" >
+                                            <input type="text" id="pic_edit" name="pic_edit"
+                                                class="mb-2 py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                                placeholder="Masukkan nama pic" required>
                                         </td>
                                     </tr>
                                     <tr>
-                                        {{-- NAMA PEMILIK --}}
-                                        <td class="label_form" style="width: 15%">Nama Pemilik</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="nama_pemilik_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan nama pemilik">
+                                        {{-- NO. TELEPON --}}
+                                        <td class="label_form" style="width: 14%">No. Telepon</td>
+                                        <td class="" style="margin: 0; padding: 0; width: 34%" >
+                                            <input type="text" id="no_telp_edit" name="no_telp_edit"
+                                                class="py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                                placeholder="Masukkan nomor telepon" required>
                                         </td>
                                     </tr>
                                 </table>
+
                             </div>
-
-                            {{-- TAB PERJANJIAN SEWA/SHBG/AJB --}}
-                            <div class="hidden p-4 rounded-lg bg-gray-50" id="perjanjian-sewa-approve" role="tabpanel" aria-labelledby="perjanjian-sewa-approve-tab">
-                                <table style="width: 100%;">
-                                    <tr>
-                                        {{-- TANGGAL PERJANJIAN --}}
-                                        <td class="label_form" style="width: 15%">Tanggal Perjanjian</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="date" id="tanggal_perjanjian_approve" class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                                        </td>
-
-                                        {{-- VERTICAL LINE --}}
-                                        <td style="width: 4%" rowspan="2">
-                                            <hr style="border: none; border-left: 1px solid rgb(206, 206, 206); height: 94px; margin: 0 30px; margin-top: -10px">
-                                        </td>
-
-                                        {{-- TANGGAL MULAI --}}
-                                        <td class="label_form" style="width: 15%">Tanggal Mulai</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="date" id="tanggal_mulai_approve" class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        {{-- KETERANGAN --}}
-                                        <td class="label_form" style="width: 15%">Keterangan</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="keterangan_perjanjian_sewa_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan keterangan">
-                                        </td>
-
-                                        {{-- TANGGAL BERAKHIR --}}
-                                        <td class="label_form" style="width: 15%">Tanggal Berakhir</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="date" id="tanggal_berakhir_approve" class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            {{-- TAB INFORMASI PBB --}}
-                            <div class="hidden p-4 rounded-lg bg-gray-50" id="informasi-pbb-approve" role="tabpanel" aria-labelledby="informasi-pbb-approve-tab">
-                                <table style="width: 100%;">
-                                    <tr>
-                                        {{-- NOP --}}
-                                        <td class="label_form" style="width: 15%">NOP</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="nop_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan nop">
-                                        </td>
-
-                                        {{-- VERTICAL LINE --}}
-                                        <td style="width: 4%" rowspan="2">
-                                            <hr style="border: none; border-left: 1px solid rgb(206, 206, 206); height: 94px; margin: 0 30px; margin-top: -10px">
-                                        </td>
-
-                                        {{-- TANGGUNGAN --}}
-                                        <td class="label_form" style="width: 15%">Tanggungan</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="tanggungan_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan tanggungan">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        {{-- ATAS NAMA --}}
-                                        <td class="label_form" style="width: 15%">Atas Nama</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="atas_nama_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan atas nama">
-                                        </td>
-
-                                        {{-- MASA TANGGUNGAN --}}
-                                        <td class="label_form" style="width: 15%">Masa Tanggungan</td>
-                                        <td class="" style="margin: 0; padding: 0; width: 33%" >
-                                            <input type="text" id="masa_tanggungan_approve"
-                                                class="mb-[7px] py-2.5 placeholder-batman-400 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                placeholder="Masukkan masa tanggungan">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
                         </div>
+
+
 
                     </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
-                    <button id="button_submit_modal_edit" data-modal-hide="editModal" type="button"
+                    <button id="button_reset_modal" type="button"
+                        class="py-2.5 px-5 mr-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Reset</button>
+                    <button id="button_submit_modal" type="button"
                         class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Simpan
                     </button>
@@ -1765,7 +1520,7 @@
                 const modal = new Modal(modalEl);
                 modal.show();
 
-                $("#select_jenis_objek_approve").select2({
+                $("#select_jenis_objek_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1774,7 +1529,7 @@
                     multiple: false
                 });
 
-                $("#select_bentuk_objek_approve").select2({
+                $("#select_bentuk_objek_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1783,7 +1538,7 @@
                     multiple: false
                 });
 
-                $("#select_objek_sewa_beli_approve").select2({
+                $("#select_objek_sewa_beli_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1792,7 +1547,7 @@
                     multiple: false
                 });
 
-                $("#select_kota_approve").select2({
+                $("#select_kota_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1801,7 +1556,7 @@
                     multiple: false
                 });
 
-                $("#select_regional_approve").select2({
+                $("#select_regional_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1810,7 +1565,7 @@
                     multiple: false
                 });
 
-                $("#select_cluster_approve").select2({
+                $("#select_cluster_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1819,7 +1574,7 @@
                     multiple: false
                 });
 
-                $("#select_lokasi_approve").select2({
+                $("#select_lokasi_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1828,7 +1583,7 @@
                     multiple: false
                 });
 
-                $("#select_hak_tanah_approve").select2({
+                $("#select_hak_tanah_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1837,7 +1592,7 @@
                     multiple: false
                 });
 
-                $("#select_kecamatan_approve").select2({
+                $("#select_kecamatan_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1846,7 +1601,7 @@
                     multiple: false
                 });
 
-                $("#select_pbg_approve").select2({
+                $("#select_pbg_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1855,7 +1610,7 @@
                     multiple: false
                 });
 
-                $("#select_kelurahan_approve").select2({
+                $("#select_kelurahan_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
@@ -1864,7 +1619,7 @@
                     multiple: false
                 });
 
-                $("#select_wilayah_approve").select2({
+                $("#select_wilayah_edit").select2({
                     dropdownParent: $("#newCreationModal"),
                     placeholder: {
                         id: '-1',
